@@ -14,6 +14,13 @@ app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended: true})) 
 app.use(bodyParser.json()) 
 
+
+// Routers 
+app.use('/api/users', require('./Routes/userRoutes')) 
+
+
+
+// Port Number
 const PORT = process.env.PORT || 5000 
 
 app.listen(PORT, () => { 

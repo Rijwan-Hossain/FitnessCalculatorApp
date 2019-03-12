@@ -1,0 +1,40 @@
+
+
+POST http://localhost:5000/api/users/register HTTP/1.1
+content-type: application/json
+
+{ 
+    "name": "Rijwan Hossain", 
+    "email": "rijwan.152.cse@gmail.com", 
+    "password": "152002007", 
+    "confirmPassword": "152002007" 
+} 
+
+###
+
+GET http://localhost:5000/api/users/all HTTP/1.1 
+
+
+###
+
+GET http://localhost:5000/api/users/singleuser/5c835188a0cc8f14a06d26be HTTP/1.1 
+
+
+###
+
+DELETE http://localhost:5000/api/users/register/5c83513122d05f027896f341 HTTP/1.1 
+
+
+###
+
+POST http://localhost:5000/api/users/login HTTP/1.1
+content-type: application/json
+
+{ 
+    "email": "rijwan.152.cse@gmail.com", 
+    "password": "152002007" 
+} 
+
+
+
+

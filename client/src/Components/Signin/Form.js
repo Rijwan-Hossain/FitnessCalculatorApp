@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import {NavLink} from 'react-router-dom'
+// import axios from 'axios'
+import './Form.css'
+
 
 const initState = {
     email: '',
-    password: ''
+    password: '' 
 } 
 
 class Form extends Component { 
@@ -21,23 +24,24 @@ class Form extends Component {
             email: this.state.email,
             password: this.state.password 
         } 
+        console.log(user);
         
-        console.log(user); 
-        
-        this.setState({
-            ...initState
-        })
-    }
+        this.setState({ 
+            ...initState 
+        }) 
 
-    render() {
-        return (
-            <div
+        
+    } 
+
+    render() { 
+        return ( 
+            <div 
                 style={{
                     padding: '30px',
                     border: '1px solid rgb(238, 238, 238)',
                     boxShadow: '0px 2px 4px 0px rgb(226, 226, 226)'
                 }}
-            >
+            > 
                 <form onSubmit={this.submitHandler}>
                     <div className="form-group">
                         <input 
@@ -64,14 +68,16 @@ class Form extends Component {
 
                 <p 
                     style={{
-                        paddingTop: '20px'
-                    }}
+                        paddingTop: '20px' 
+                    }} 
                 >
-                    No Account, {' '}
-                    <NavLink to="/registration"> 
+                    No Account, {' '} 
+                    <NavLink 
+                        id="reg" 
+                        to="/registration"> 
                         Create One 
-                    </NavLink>
-                </p>
+                    </NavLink>  
+                </p> 
             </div> 
         ) 
     } 

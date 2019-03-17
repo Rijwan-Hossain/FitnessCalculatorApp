@@ -6,12 +6,9 @@ const user = {
     age: 25
 } 
 
-console.log(Object.keys(user).length);
-
-
-
-let arr = []; 
-
+for(let i in user) {
+    console.log(user[i]);
+}
 
 
 

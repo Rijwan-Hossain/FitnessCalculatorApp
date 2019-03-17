@@ -12,10 +12,11 @@ const register = (req, res) => {
     // Validate Data 
     const result = validate({ name, email, password, confirmPassword }) 
     if(Object.keys(result).length !== 0) { 
-        res.status(400).json({ 
+        res.json({ 
             result 
         }) 
     } 
+    
     
     // Check Duplicate User 
     User.find({email: email}) 

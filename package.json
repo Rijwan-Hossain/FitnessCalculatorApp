@@ -8,7 +8,7 @@
     "server": "nodemon app.js",
     "dev": "concurrently \" npm run client \" \" npm run server \" "
   },
-  "repository": {
+  "repository": { 
     "type": "git",
     "url": "git+https://github.com/Rijwan-Hossain/FitnessCalculatorApp.git"
   },

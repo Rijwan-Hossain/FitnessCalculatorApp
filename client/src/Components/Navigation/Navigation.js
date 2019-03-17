@@ -17,8 +17,14 @@ class Navigation extends Component {
                         <li><NavLink className="color" to="/">Home</NavLink></li> 
                         <li>Gym 
                             <ul class="subList"> 
-                                <li><NavLink className="subcolor" to="/mangym">Man</NavLink></li> 
-                                <li><NavLink className="subcolor" to="/womangym">Woman</NavLink></li> 
+                                <li>
+                                    <NavLink className="subcolor" to="/mangym">
+                                        Man
+                                    </NavLink></li> 
+                                <li>
+                                    <NavLink className="subcolor" to="/womangym">
+                                        Woman
+                                    </NavLink></li> 
                             </ul> 
                         </li> 
                         <li>Diet 

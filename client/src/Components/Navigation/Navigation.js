@@ -36,6 +36,7 @@ class Navigation extends Component {
                         <li><NavLink className="color" to="/blog">Blog</NavLink></li> 
                         <li><NavLink className="color" to="/groceries">Groceries</NavLink></li> 
                         <li><NavLink className="color" to="/tutorials">Tutorials</NavLink></li> 
+                        
                         <li><NavLink className="color" to="/profile">Profile</NavLink></li> 
                         <li><NavLink className="color" to="/login">Login</NavLink></li> 
                     </ul> 

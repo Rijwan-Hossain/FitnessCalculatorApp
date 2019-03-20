@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom' 
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom' 
 import Navigation from './Components/Navigation/Navigation';
 
 import Home from './Components/Home/Home' 
@@ -38,7 +38,29 @@ class App extends Component {
               <Route path="/blog" component={Blog} /> 
               <Route path="/groceries" component={Groceries} /> 
               <Route path="/tutorials" component={Tutorials} /> 
-              <Route path="/profile" component={Profile} /> 
+
+              <Route path="/profile" render={() => { 
+                let token = localStorage.getItem('token');
+                if(token) { 
+                  return <Profile /> 
+                } 
+                else {
+                  return (
+                    <div className="container"> 
+                      <h1 
+                        className="display-4 text-danger text-center"
+                        style={{ 
+                          position: 'absolute', 
+                          top: '50%', 
+                          left: '50%', 
+                          transform: 'translate(-50%, -50%)'
+                        }}> 
+                        Please login to see your profile
+                      </h1> 
+                    </div> 
+                  ) 
+                } 
+              }} /> 
 
               <Route path="/login" component={Signin} /> 
               <Route path="/registration" component={Signup} /> 

@@ -144,14 +144,20 @@ let deleteUser = (req, res) => {
 // Login 
 let login = (req, res) => { 
     let { email, password } = req.body 
-    //   Should Check Validation, But I did not. 
-    //   So, do it in front end 
+
+    if(email.search('@') === -1) { 
+        res.json({ 
+            message: 'Enter a valid email' 
+        }) 
+    } 
+
+
 
     User.findOne({email}) 
         .then(user => { 
             if(!user) { 
                 res.json({ 
-                    message: 'User Not Found'
+                    message: 'Wrong Email' 
                 }) 
             } 
             else { 
@@ -161,23 +167,20 @@ let login = (req, res) => {
                             message: 'Server Error'
                         }) 
                     } 
-                    else {
+                    else { 
                         if(!result) {
                             res.json({ 
                                 message: 'Wrong Password'
                             }) 
                         } 
                         else { 
+                            const payload = {
+                                id: user._id, 
+                                name: user.name, 
+                                email 
+                            }
                             const token = jwt.sign( 
-                                { 
-                                    id: user._id, 
-                                    name: user.name, 
-                                    email, 
-                                }, 
-                                'SECRET', 
-                                { 
-                                    expiresIn: '1d'
-                                } 
+                                payload, 'SECRET', { expiresIn: '1d' } 
                             ) 
                             
                             res.json({ 

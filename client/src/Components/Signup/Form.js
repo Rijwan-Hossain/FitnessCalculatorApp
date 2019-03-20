@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { withRouter } from 'react-router-dom'
+import {Modal, ModalBody, Button, ModalFooter } from 'react-bootstrap'
 
 const initState = {
     name: '',
@@ -8,14 +10,29 @@ const initState = {
     confirmPassword: '',
     errors: {}, 
     duplicateMessage: '', 
-    successMessage: ''
+    successMessage: '', 
+    serverError: false 
 }
 
-class Form extends Component {
+class Form extends Component { 
     state = initState;
 
-    changeHandler = (e) => {
-        this.setState({
+    userExist = (e) => { 
+        e.preventDefault(); 
+        this.setState({ 
+            duplicateMessage: '' 
+        }) 
+    } 
+
+    serverError = (e) => { 
+        e.preventDefault(); 
+        this.setState({ 
+            serverError: false 
+        }) 
+    } 
+
+    changeHandler = (e) => { 
+        this.setState({ 
             [e.target.name]: e.target.value
         }) 
     } 
@@ -36,25 +53,29 @@ class Form extends Component {
                     this.setState({
                         errors: result.data.result
                     })
-                } else { 
+                } 
+                else { 
                     if(result.data.message === 'You cannot signup by this email.') { 
-                        this.setState({
+                        this.setState({ 
                             duplicateMessage: result.data.message
                         }) 
                     } 
                     else { 
                         this.setState({ 
-                            successMessage: result.data.message
+                            successMessage: result.data.message 
                         }) 
+
+                        setTimeout(() => { 
+                            this.props.history.push('/login') 
+                        }, 3000) 
                     } 
-                    console.log(result.data.message) 
                 } 
             }) 
-            .catch(err => console.log(err)) 
-        
-        this.setState({ 
-            ...initState 
-        }) 
+            .catch(err => { 
+                this.setState({ 
+                    serverError: true 
+                }) 
+            }) 
     } 
 
     render() { 
@@ -151,29 +172,48 @@ class Form extends Component {
                         Submit 
                     </button> 
                 </form> 
-                { 
-                    this.state.duplicateMessage 
-                    ? 
-                    <p 
-                        style={{ 
-                            fontSize: '12px', 
-                            color: 'red'
-                        }}> 
-                        { this.state.duplicateMessage } 
-                    </p> 
-                    : 
+                
+                {
+                    this.state.duplicateMessage && 
+                    <Modal show={true}>
+                        <ModalBody>
+                            { this.state.duplicateMessage }
+                        </ModalBody> 
+
+                        <ModalFooter>
+                            <Button onClick={this.userExist}>
+                                close
+                            </Button> 
+                        </ModalFooter>
+                    </Modal> 
+                } 
+
+                {
                     this.state.successMessage && 
-                    <p 
-                        style={{ 
-                            fontSize: '14px', 
-                            color: 'green'
-                        }}> 
-                        { this.state.successMessage } 
-                    </p> 
+                    <Modal show={true}>
+                        <ModalBody>
+                            { this.state.successMessage }
+                        </ModalBody> 
+                    </Modal> 
+                } 
+
+                {
+                    this.state.serverError && 
+                    <Modal show={true}>
+                        <ModalBody>
+                            Server Error 
+                        </ModalBody> 
+
+                        <ModalFooter>
+                            <Button onClick={this.serverError}>
+                                close
+                            </Button> 
+                        </ModalFooter>
+                    </Modal> 
                 } 
             </div> 
         ) 
     } 
 } 
 
-export default Form;
+export default withRouter(Form);

@@ -55,7 +55,9 @@ class Profile extends Component {
         return ( 
             <div className="container"> 
                 <div className="d-flex my-3"> 
-                    <h2 className="align-items-start col-8 text-center"> 
+                    <h2 className="align-items-start col-8 text-center"
+                        style={{zIndex: '-1'}}
+                    > 
                         User Dashboard 
                     </h2> 
                     <button 

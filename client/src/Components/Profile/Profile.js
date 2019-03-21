@@ -37,7 +37,7 @@ class Profile extends Component {
     editHandler = (e) => {
         e.preventDefault(); 
         this.props.history.push('/editprofile');
-    }
+    } 
 
     render() { 
         let { 
@@ -55,30 +55,43 @@ class Profile extends Component {
         return ( 
             <div className="container"> 
                 <div className="d-flex my-3"> 
-                    <h2 className="align-items-start col-10 text-center"> 
+                    <h2 className="align-items-start col-8 text-center"> 
                         User Dashboard 
                     </h2> 
-                    
+                    <button 
+                        type="submit"
+                        style={{fontSize: '22px'}}
+                        className="btn btn-primary col-2 mx-3"
+                        onClick={this.editHandler}
+                        // style={{float: 'right'}}
+                    > 
+                        Update Profile
+                    </button>  
                     <button
                         className="btn btn-danger align-items-end col-2" 
-                        style={{fontSize: '25px', float: 'left'}}
+                        style={{fontSize: '22px', float: 'left'}}
                         onClick={this.clickHandler}> 
                         Logout 
                     </button> 
                 </div> 
 
                 {/* Profile */} 
-                <div className="d-flex">
-                    <div id="img" className="align-items-start col-2">
+                <div className="d-flex" style={{width: '100%'}}>
+                    <div id="img" className="align-items-start">
                         <img 
                             src={ avatar || '#' } 
                             alt="Image" 
                         /> 
                     </div> 
-                    <div className="col-10" style={{zIndex: '-1'}}> 
-                        <h3>
-                            { name } 
-                        </h3> 
+                    <div className="" style={{zIndex: '-1', width: '76%'}}> 
+                        <b>
+                            <h3 
+                                style={{fontSize: '40px'}}
+                                className="display-4"
+                            >
+                                { name } 
+                            </h3> 
+                        </b>
                         <p style={{color: 'rgb(99, 168, 248)'}}>
                             { email }
                         </p> 
@@ -156,16 +169,7 @@ class Profile extends Component {
                             </p>
                             <p>{ address || 'Update Profile' }</p> 
                         </div> 
-
-                        <button 
-                            onClick={this.editHandler}
-                            className="btn btn-primary"
-                            style={{float: 'right'}}
-                        > 
-                            Update Profile
-                        </button> 
-
-                        <div style={{height: '80px'}}></div>
+                        <div style={{height: '30px'}}></div>
                     </div> 
                 </div> 
             </div> 

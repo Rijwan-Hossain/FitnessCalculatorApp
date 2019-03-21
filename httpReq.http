@@ -5,7 +5,7 @@ content-type: application/json
 
 { 
     "name": "Rijwan Hossain", 
-    "email": "rijwan.152.cse@gmail.com", 
+    "email": "rijwan.cse@gmail.com", 
     "password": "152002007", 
     "confirmPassword": "152002007" 
 } 
@@ -17,7 +17,7 @@ GET http://localhost:5000/api/users/all HTTP/1.1
 
 ###
 
-GET http://localhost:5000/api/users/singleuser/5c835188a0cc8f14a06d26be HTTP/1.1 
+GET http://localhost:5000/api/users/singleuser/5c917b3e66f3532010090e2a HTTP/1.1 
 
 
 ###

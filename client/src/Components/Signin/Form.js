@@ -56,13 +56,12 @@ class Form extends Component {
                 } 
                 else if (Object.keys(result.data).length === 2) {
                     localStorage.setItem('token', result.data.token)
-
                     let user = jwtDecode(result.data.token)
                     this.setState({ 
                         successMessage: result.data.message,
                         user: user 
                     }) 
-
+                    
                     let { token } = result.data
                     if (token) {
                         axios.defaults.headers.common['Authorization'] = token

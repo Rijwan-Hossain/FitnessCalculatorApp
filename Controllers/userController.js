@@ -1,7 +1,7 @@
 
 const User = require('../Models/User') 
 const bcrypt = require('bcryptjs') 
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken') 
 const validate = require('../Validator/registrationValidator') 
 
 // Create User 
@@ -41,9 +41,11 @@ const register = (req, res) => {
                         name, 
                         email, 
                         password: hash, 
+                        mobile: req.body.mobile || '', 
                         avatar: req.body.avatar || '', 
                         gender: req.body.gender || '', 
                         weight: req.body.weight || '', 
+                        height: req.body.height || '', 
                         birthDate: req.body.birthDate || null, 
                         address: req.body.address || '' 
                     }) 

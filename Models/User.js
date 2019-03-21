@@ -13,9 +13,11 @@ const UserSchema = new Schema({
     name: { ...common }, 
     email: { ...common }, 
     password: { ...common }, 
+    mobile: String, 
     avatar: String, 
     gender: String, 
     weight: String, 
+    height: String, 
     birthDate: Date, 
     address: String 
 }, 

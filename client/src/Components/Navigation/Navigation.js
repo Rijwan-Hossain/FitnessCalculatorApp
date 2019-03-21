@@ -44,7 +44,7 @@ class Navigation extends Component {
             </nav> 
         ) 
     } 
-}
+} 
 
 export default Navigation 
 

@@ -16,22 +16,20 @@ class Profile extends Component {
         
         axios.get(`http://localhost:5000/api/users/singleuser/${user.id}`) 
             .then(result => { 
-                let { user } = result.data;
-                this.setState({
+                let { user } = result.data; 
+                this.setState({ 
                     user 
                 }) 
-                console.log(this.state.user);
-                
             }) 
-            .catch(err => {
+            .catch(err => { 
                 console.log('Server Error');
             }) 
     } 
 
-    clickHandler = (e) => {
-        e.preventDefault();
-        localStorage.removeItem('token');
-        this.props.history.push('/');
+    clickHandler = (e) => { 
+        e.preventDefault(); 
+        localStorage.removeItem('token'); 
+        this.props.history.push('/login'); 
     } 
 
     editHandler = (e) => {
@@ -65,7 +63,6 @@ class Profile extends Component {
                         style={{fontSize: '22px'}}
                         className="btn btn-primary col-2 mx-3"
                         onClick={this.editHandler}
-                        // style={{float: 'right'}}
                     > 
                         Update Profile
                     </button>  
@@ -85,7 +82,7 @@ class Profile extends Component {
                             alt="Image" 
                         /> 
                     </div> 
-                    <div className="" style={{zIndex: '-1', width: '76%'}}> 
+                    <div style={{zIndex: '-1', width: '76%'}}> 
                         <b>
                             <h3 
                                 style={{fontSize: '40px'}}

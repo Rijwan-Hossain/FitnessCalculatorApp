@@ -18,6 +18,7 @@ import Profile from './Components/Profile/Profile'
 
 import Signin from './Components/Signin/Signin' 
 import Signup from './Components/Signup/Signup' 
+import Update from './Components/Profile/Update'
 
 
 class App extends Component { 
@@ -64,6 +65,7 @@ class App extends Component {
 
               <Route path="/login" component={Signin} /> 
               <Route path="/registration" component={Signup} /> 
+              <Route path="/editprofile" component={Update} /> 
 
               <Route component={Error} exact /> 
           </Switch> 

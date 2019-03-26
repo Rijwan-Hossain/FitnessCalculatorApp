@@ -1,5 +1,5 @@
 
-
+// Create ID
 POST http://localhost:5000/api/users/register HTTP/1.1
 content-type: application/json
 
@@ -10,22 +10,15 @@ content-type: application/json
     "confirmPassword": "152002007" 
 } 
 
+
+// Show All User
 ###
 
-GET http://localhost:5000/api/users/all HTTP/1.1 
+GET http://localhost:5000/api/users/alluser HTTP/1.1 
 
 
-###
-
-GET http://localhost:5000/api/users/singleuser/5c917b3e66f3532010090e2a HTTP/1.1 
-
-
-###
-
-DELETE http://localhost:5000/api/users/register/5c83513122d05f027896f341 HTTP/1.1 
-
-
-###
+// Login
+### 
 
 POST http://localhost:5000/api/users/login HTTP/1.1
 content-type: application/json
@@ -34,6 +27,39 @@ content-type: application/json
     "email": "rijwan.152.cse@gmail.com", 
     "password": "152002007" 
 } 
+
+
+
+// Get single user
+###
+
+GET http://localhost:5000/api/users/register/5c96eaf26a163421c4bf4b6a HTTP/1.1 
+
+
+// Update User
+###
+
+PATCH http://localhost:5000/api/users/register/5c96eaf26a163421c4bf4b6a HTTP/1.1 
+content-type: application/json
+
+{ 
+    "weight": "72 KG", 
+    "gender": "male",
+    "height": "5 ft 10 inch", 
+    "mobile": "01758712370",
+    "address": "Mirpur-Dhaka, Bangladesh in South-Asia"
+} 
+
+
+// Delete User
+###
+
+DELETE http://localhost:5000/api/users/register/5c96ea8e6a163421c4bf4b69 HTTP/1.1 
+
+
+
+
+
 
 
 

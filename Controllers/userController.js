@@ -203,12 +203,49 @@ let login = (req, res) => {
 
 
 
-module.exports = {
+// Update User 
+let updateUser = (req, res) => { 
+    let { id } = req.params; 
+    
+    User.findOneAndUpdate({_id: id}, {$set: req.body}) 
+        .then((updatedUser) => { 
+            if(Object.keys(updatedUser).length === 0) { 
+                res.json({ 
+                    message: 'No User Found' 
+                }) 
+            } 
+            else { 
+                res.json({ 
+                    message: 'Updated Successfully',
+                    user 
+                }) 
+            } 
+        }) 
+        .catch(err => { 
+            if(Object.keys(err).length === 0) {
+                User.findById(id) 
+                    .then(user => { 
+                        res.json({ 
+                            message: 'Updated Successfully', 
+                            user 
+                        }) 
+                    }) 
+            } 
+            else {
+                res.json({ 
+                    message: 'error Occurred in updating in server' 
+                }) 
+            } 
+        }) 
+} 
+
+module.exports = { 
     register, 
     getAllUsers, 
     getSingleUser, 
     deleteUser, 
-    login 
+    updateUser, 
+    login
 }
 
 

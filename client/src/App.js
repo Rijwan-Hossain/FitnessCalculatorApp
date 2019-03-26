@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom' 
+import { BrowserRouter, Route, Switch } from 'react-router-dom' 
 import Navigation from './Components/Navigation/Navigation';
 
 import Home from './Components/Home/Home' 
@@ -65,7 +65,13 @@ class App extends Component {
 
               <Route path="/login" component={Signin} /> 
               <Route path="/registration" component={Signup} /> 
-              <Route path="/editprofile" component={Update} /> 
+              {/* <Route path="/editprofile" component={Update} />  */}
+              <Route path="/editprofile" render={() => {
+                let token = localStorage.getItem('token');
+                if(token) { 
+                  return <Update /> 
+                } 
+              }} /> 
 
               <Route component={Error} exact /> 
           </Switch> 

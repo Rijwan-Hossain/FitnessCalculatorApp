@@ -14,7 +14,7 @@ class Profile extends Component {
         let token = localStorage.getItem('token').split(' ')[1] 
         let user = jwtDecode(token) 
         
-        axios.get(`http://localhost:5000/api/users/singleuser/${user.id}`) 
+        axios.get(`http://localhost:5000/api/users/register/${user.id}`) 
             .then(result => { 
                 let { user } = result.data; 
                 this.setState({ 
@@ -38,17 +38,26 @@ class Profile extends Component {
     } 
 
     render() { 
+        
         let { 
             name, 
             email, 
             gender, 
             weight, 
-            height, 
             mobile, 
             address, 
-            avatar, 
-            birthDate 
-        } = this.state.user; 
+            ft, 
+            inch,  
+            avatar
+        } = this.state.user 
+            
+        
+        
+
+        let profileName = ''; 
+        if(name) { 
+            profileName = name.split(' ')[0]; 
+        } 
 
         return ( 
             <div className="container"> 
@@ -56,19 +65,19 @@ class Profile extends Component {
                     <h2 className="align-items-start col-8 text-center"
                         style={{zIndex: '-1'}}
                     > 
-                        User Dashboard 
+                        { profileName }'s  Profile 
                     </h2> 
                     <button 
                         type="submit"
-                        style={{fontSize: '22px'}}
-                        className="btn btn-primary col-2 mx-3"
+                        style={{fontSize: '20px'}}
+                        className="btn btn-secondary col-2 mx-3"
                         onClick={this.editHandler}
                     > 
                         Update Profile
                     </button>  
-                    <button
+                    <button 
                         className="btn btn-danger align-items-end col-2" 
-                        style={{fontSize: '22px', float: 'left'}}
+                        style={{fontSize: '20px', float: 'left'}}
                         onClick={this.clickHandler}> 
                         Logout 
                     </button> 
@@ -76,21 +85,32 @@ class Profile extends Component {
 
                 {/* Profile */} 
                 <div className="d-flex" style={{width: '100%'}}>
-                    <div id="img" className="align-items-start">
-                        <img 
-                            src={ avatar || '#' } 
-                            alt="Image" 
-                        /> 
+                    <div 
+                        id="img" 
+                        style={{borderRadius: '5px'}}
+                        className="align-items-start">
+                        { 
+                            avatar 
+                            ? 
+                            <img src={ avatar } alt="myImage"/>
+                            :
+                            <h4 
+                                style={{ 
+                                    marginTop: '80px', 
+                                    fontSize: '35px'
+                                }} 
+                                className="text-center display-4">
+                                Image Not Available
+                            </h4>
+                        } 
                     </div> 
                     <div style={{zIndex: '-1', width: '76%'}}> 
-                        <b>
-                            <h3 
-                                style={{fontSize: '40px'}}
-                                className="display-4"
-                            >
-                                { name } 
-                            </h3> 
-                        </b>
+                        <h3 
+                            style={{fontSize: '40px'}}
+                            className="display-4"
+                        >
+                            { name } 
+                        </h3> 
                         <p style={{color: 'rgb(99, 168, 248)'}}>
                             { email }
                         </p> 
@@ -109,35 +129,52 @@ class Profile extends Component {
                             <p>{ name }</p> 
                         </div> 
 
-                        <div className="d-flex"> 
-                            <p style={{width: '100px'}}>
-                                Birth Date:
-                            </p>
-                            <p>{ birthDate || 'Update Profile' }</p> 
-                        </div> 
 
                         <div className="d-flex"> 
                             <p style={{width: '100px'}}>
-                                Gender:
-                            </p>
+                                Gender: 
+                            </p> 
                             <p>{ gender || 'Update Profile' }</p> 
-                        </div>
+                        </div> 
 
                         <div className="d-flex"> 
-                            <p style={{width: '100px'}}>
-                                Height:
-                            </p>
-                            <p>{ height || 'Update Profile' }</p> 
+                            <p style={{width: '100px'}}> 
+                                Height: 
+                            </p> 
+                            {
+                                ft
+                                ? 
+                                <div> 
+                                    <p> 
+                                        {ft} feet {inch ? inch : '0'} inch
+                                    </p> 
+                                </div> 
+                                : 
+                                <p>Update Profile</p> 
+                            } 
                         </div> 
+
+
+
+
+
 
                         <div className="d-flex"> 
                             <p style={{width: '100px'}}>
                                 weight:
-                            </p>
+                            </p> 
                             <p>{ weight || 'Update Profile' }</p> 
-                        </div>
+                        </div> 
 
-                        {/*  */}
+
+
+
+
+
+
+
+
+                        {/*  */} 
 
                         <h6 className="mt-5 mb-3"
                             style={{
@@ -149,7 +186,7 @@ class Profile extends Component {
                         <div className="d-flex">
                             <p style={{width: '100px'}}>
                                 Email:
-                            </p>
+                            </p> 
                             <p>{ email || 'Update Profile' }</p> 
                         </div> 
 

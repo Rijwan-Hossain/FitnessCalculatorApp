@@ -80,7 +80,7 @@ class Form extends Component {
                     serverError: true
                 })
             })
-    }
+    } 
 
     render() {
         return (

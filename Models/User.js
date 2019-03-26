@@ -17,8 +17,8 @@ const UserSchema = new Schema({
     avatar: String, 
     gender: String, 
     weight: String, 
-    height: String, 
-    birthDate: Date, 
+    ft: String, 
+    inch: String,
     address: String 
 }, 
 { 

@@ -6,20 +6,19 @@ const {
     getAllUsers, 
     getSingleUser, 
     deleteUser, 
+    updateUser, 
     login
 } = require('../Controllers/userController'); 
 const authenticate = require('../Middlewares/authenticate')
 
 // routes
 router.post('/register', register); 
-// router.get('/all', authenticate, getAllUsers); 
-router.get('/all', getAllUsers); 
-router.get('/singleuser/:id', getSingleUser); 
+router.get('/alluser', getAllUsers); 
+router.get('/register/:id', getSingleUser); 
 router.delete('/register/:id', deleteUser); 
+router.patch('/register/:id', updateUser); 
 router.post('/login', login); 
-router.get('./profile', authenticate, (req, res) => {
-    console.log('Yahoo!!! , I am logged in.'); 
-})
+
 
 module.exports = router; 
 

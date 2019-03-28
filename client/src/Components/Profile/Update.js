@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import jwtDecode from 'jwt-decode'
 import axios from 'axios'
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom' 
+import './UpdtPrfl.css'
+
+let CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/rijwan/upload' 
+let CLOUDINARY_UPLOAD_PRESET = 'dwow7fpd'
 
 class Update extends Component {
 
@@ -13,7 +17,8 @@ class Update extends Component {
         address: '',
         mobile: '',
         ft: '', 
-        inch: ''
+        inch: '', 
+        saveMsg: false
     }
 
     componentDidMount() {
@@ -39,11 +44,43 @@ class Update extends Component {
             })
     }
 
-    changeHandler = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+    changeHandler = (e) => { 
+        
+        if(e.target.name) { 
+            this.setState({ 
+                [e.target.name]: e.target.value
+            }) 
+        }  
+        else { 
+            let file = e.target.files[0] 
+
+            let formData = new FormData() 
+            formData.append('file', file) 
+            formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+
+            axios({ 
+                url: CLOUDINARY_URL,
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }, 
+                data: formData 
+            }) 
+            .then(res => {
+                console.log(res);
+                let url = res.data.secure_url 
+                
+                this.setState({ 
+                    ...this.state, 
+                    avatar: url, 
+                    saveMsg: true 
+                }) 
+            }) 
+            .catch(err => { 
+                console.log(err);
+            }) 
+        } 
+    } 
 
     submitHandler = (e) => {
         e.preventDefault();
@@ -92,8 +129,11 @@ class Update extends Component {
                                 avatar 
                                 ? 
                                 <img 
+                                    height='150px' 
+                                    width='150px'
                                     src={avatar} 
-                                    alt="myImage"
+                                    alt="myImage" 
+                                    style={{borderRadius: '5px'}} 
                                 /> 
                                 : 
                                 <div>  
@@ -111,12 +151,20 @@ class Update extends Component {
                             } 
                             
                         </div> 
-                        <button 
-                            className="btn btn-success mt-1"
-                            style={{ width: '150px' }}
-                        > Update Image 
-                        </button> 
-                    </div>
+                        <label id="lbl"> 
+                            Upload Image 
+                            <input 
+                                onChange={this.changeHandler} 
+                                style={{display: 'none'}} 
+                                id="File" 
+                                size="20" 
+                                type="file"/> 
+                        </label> 
+                        { 
+                            this.state.saveMsg && 
+                            <p>Click the save button</p>
+                        } 
+                    </div> 
                     
                     <div style={{ float: 'left', width: '320px' }}>
                         <div className="form-group">
@@ -206,8 +254,8 @@ class Update extends Component {
                                 className="my-1 mx-2"
                                 onChange={this.changeHandler}
                             /> 
-                            Male
-                            <input
+                            Male 
+                            <input 
                                 type="radio"
                                 name="gender"
                                 value="Female"

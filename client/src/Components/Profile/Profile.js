@@ -92,7 +92,12 @@ class Profile extends Component {
                         { 
                             avatar 
                             ? 
-                            <img src={ avatar } alt="myImage"/>
+                            <img 
+                                style={{borderRadius: '5px'}}
+                                height='250px' 
+                                width='100%' 
+                                src={ avatar } 
+                                alt="myImage"/>
                             :
                             <h4 
                                 style={{ 

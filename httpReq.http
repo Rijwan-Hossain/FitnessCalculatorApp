@@ -33,7 +33,7 @@ content-type: application/json
 // Get single user
 ###
 
-GET http://localhost:5000/api/users/register/5c96eaf26a163421c4bf4b6a HTTP/1.1 
+GET http://localhost:5000/api/users/register/5c99ed6f7211e71758287865 HTTP/1.1 
 
 
 // Update User
@@ -54,12 +54,7 @@ content-type: application/json
 // Delete User
 ###
 
-DELETE http://localhost:5000/api/users/register/5c96ea8e6a163421c4bf4b69 HTTP/1.1 
-
-
-
-
-
+DELETE http://localhost:5000/api/users/register/5c9aaa64eb1be60d981db9e0 HTTP/1.1 
 
 
 

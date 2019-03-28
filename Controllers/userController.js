@@ -125,7 +125,7 @@ let getSingleUser = (req, res) => {
 // Delete single user 
 let deleteUser = (req, res) => { 
     const id = req.params.id 
-    User.findOneAndDelete(id) 
+    User.findOneAndDelete({_id: id}) 
         .then(user => { 
             res.json({ 
                 message: `${user.name} Deleted Successfully`

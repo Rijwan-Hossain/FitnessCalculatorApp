@@ -12,14 +12,14 @@ const register = (req, res) => {
     // Validate Data 
     const result = validate({ name, email, password, confirmPassword }) 
     if(Object.keys(result).length !== 0) { 
-        res.json({ 
+        return res.json({ 
             result 
         }) 
     } 
     
     
     // Check Duplicate User 
-    User.find({email: email}) 
+    User.findOne({email}) 
         .then(user => { 
             if(Object.keys(user).length > 0) { 
                 res.json({ 
@@ -31,7 +31,7 @@ const register = (req, res) => {
                 bcrypt.hash(password, 10, (err, hash) => { 
                     // Error First Pattern 
                     if(err) { 
-                        res.json({ 
+                        return res.json({ 
                             error: err 
                         }) 
                     } 
@@ -45,8 +45,8 @@ const register = (req, res) => {
                         avatar: req.body.avatar || '', 
                         gender: req.body.gender || '', 
                         weight: req.body.weight || '', 
-                        height: req.body.height || '', 
-                        birthDate: req.body.birthDate || null, 
+                        ft: req.body.ft || '', 
+                        inch: req.body.inch || '', 
                         address: req.body.address || '' 
                     }) 
                     
@@ -93,6 +93,7 @@ let getAllUsers = (req, res) => {
 } 
 
 
+
 // Get a single user 
 let getSingleUser = (req, res) => { 
     const id = req.params.id 
@@ -109,27 +110,6 @@ let getSingleUser = (req, res) => {
                     user 
                 }) 
             } 
-        }) 
-        .catch(err => { 
-            res.json({ 
-                message: 'Server Error', 
-                error: err 
-            }) 
-        }) 
-} 
-
-
-
-
-
-// Delete single user 
-let deleteUser = (req, res) => { 
-    const id = req.params.id 
-    User.findOneAndDelete({_id: id}) 
-        .then(user => { 
-            res.json({ 
-                message: `${user.name} Deleted Successfully`
-            }) 
         }) 
         .catch(err => { 
             res.json({ 
@@ -185,7 +165,7 @@ let login = (req, res) => {
                                 payload, 'SECRET', { expiresIn: '1d' } 
                             ) 
                             
-                            res.json({ 
+                            return res.json({ 
                                 message: 'Login Successful', 
                                 token: `Bearer ${token}`
                             }) 
@@ -239,14 +219,34 @@ let updateUser = (req, res) => {
         }) 
 } 
 
+
+
+// Delete single user 
+let deleteUser = (req, res) => { 
+    const id = req.params.id 
+    User.findOneAndDelete({_id: id}) 
+        .then(user => { 
+            res.json({ 
+                message: `${user.name} Deleted Successfully`
+            }) 
+        }) 
+        .catch(err => { 
+            res.json({ 
+                message: 'Server Error', 
+                error: err 
+            }) 
+        }) 
+} 
+
+
 module.exports = { 
     register, 
     getAllUsers, 
     getSingleUser, 
-    deleteUser, 
+    login, 
     updateUser, 
-    login
-}
+    deleteUser 
+} 
 
 
 

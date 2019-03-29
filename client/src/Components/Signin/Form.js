@@ -72,7 +72,7 @@ class Form extends Component {
                     
                     setTimeout(() => {
                         this.props.history.push('/profile');
-                    }, 3000) 
+                    }, 2200) 
                 }
             })
             .catch(err => {

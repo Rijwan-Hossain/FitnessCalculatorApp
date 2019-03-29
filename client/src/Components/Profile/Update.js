@@ -52,6 +52,8 @@ class Update extends Component {
             }) 
         }  
         else { 
+            console.warn('I am in file type successfully') 
+            
             let file = e.target.files[0] 
 
             let formData = new FormData() 
@@ -66,19 +68,24 @@ class Update extends Component {
                 }, 
                 data: formData 
             }) 
-            .then(res => {
-                console.log(res);
-                let url = res.data.secure_url 
-                
-                this.setState({ 
-                    ...this.state, 
-                    avatar: url, 
-                    saveMsg: true 
+                .then(res => { 
+                    console.log(res);
+                    let url = res.data.secure_url 
+                    
+                    this.setState({ 
+                        ...this.state, 
+                        avatar: url, 
+                        saveMsg: true 
+                    }) 
                 }) 
-            }) 
-            .catch(err => { 
-                console.log(err);
-            }) 
+                .catch(err => { 
+                    console.log('err');
+                    console.log(err);
+                    this.setState({
+                        ...this.state, 
+                        saveMsg: 'Error'
+                    }) 
+                }) 
         } 
     } 
 
@@ -161,8 +168,13 @@ class Update extends Component {
                                 type="file"/> 
                         </label> 
                         { 
-                            this.state.saveMsg && 
+                            this.state.saveMsg === true && 
                             <p>Click the save button</p>
+                        } 
+
+                        { 
+                            this.state.saveMsg === 'Error' && 
+                            <p>Error Occured</p>
                         } 
                     </div> 
                     

@@ -11,4 +11,8 @@
     border-radius: 50px; 
 } 
 
+#lbl:hover {
+    cursor: pointer;
+} 
+
 

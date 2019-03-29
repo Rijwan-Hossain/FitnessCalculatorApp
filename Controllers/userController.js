@@ -150,17 +150,17 @@ let login = (req, res) => {
                         }) 
                     } 
                     else { 
-                        if(!result) {
+                        if(!result) { 
                             res.json({ 
                                 message: 'Wrong Password'
                             }) 
                         } 
                         else { 
-                            const payload = {
+                            const payload = { 
                                 id: user._id, 
                                 name: user.name, 
                                 email 
-                            }
+                            } 
                             const token = jwt.sign( 
                                 payload, 'SECRET', { expiresIn: '1d' } 
                             ) 
@@ -237,6 +237,8 @@ let deleteUser = (req, res) => {
             }) 
         }) 
 } 
+
+
 
 
 module.exports = { 

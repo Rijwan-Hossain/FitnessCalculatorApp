@@ -59,3 +59,51 @@ DELETE http://localhost:5000/api/users/register/5c9aaa64eb1be60d981db9e0 HTTP/1.
 
 
 
+
+
+
+
+
+
+// Tutorials 
+
+###
+// Create Tutorial
+POST http://localhost:5000/api/tutorials HTTP/1.1
+content-type: application/json
+
+{ 
+    "question": "How to remove belly fat", 
+    "solution": "qrstuv wxyz ghijk abcdef lmnop."
+} 
+
+
+###
+// Get All Tutorial
+GET http://localhost:5000/api/tutorials HTTP/1.1
+
+
+###
+// Get single Tutorial
+GET http://localhost:5000/api/tutorials/5c9de113128e870604a41dcf HTTP/1.1
+
+
+### 
+// Update Tutorial
+PATCH http://localhost:5000/api/tutorials/5c9de113128e870604a41dcf HTTP/1.1
+content-type: application/json
+
+{ 
+    "question": "How fat stored in belly", 
+    "solution": "abcdef ghijk lmnop qrstu vwxyz."
+} 
+
+
+
+###
+// Delete Tutorial 
+DELETE http://localhost:5000/api/tutorials/5c9de113128e870604a41dcf HTTP/1.1
+
+
+
+

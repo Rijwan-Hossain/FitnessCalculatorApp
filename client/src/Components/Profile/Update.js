@@ -61,15 +61,15 @@ class Update extends Component {
             formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
 
             axios({ 
-                url: CLOUDINARY_URL,
+                url: CLOUDINARY_URL, 
                 method: 'POST', 
-                headers: {
+                headers: { 
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }, 
                 data: formData 
             }) 
                 .then(res => { 
-                    console.log(res);
+                    console.log(res); 
                     let url = res.data.secure_url 
                     
                     this.setState({ 
@@ -164,12 +164,17 @@ class Update extends Component {
                                 onChange={this.changeHandler} 
                                 style={{display: 'none'}} 
                                 id="File" 
-                                size="20" 
+                                size="60" 
                                 type="file"/> 
                         </label> 
                         { 
                             this.state.saveMsg === true && 
-                            <p>Click the save button</p>
+                            <p style={{ 
+                                width: '150px',
+                                color: 'rgb(211, 104, 104)'
+                            }}>
+                                Click the save button to save your image
+                            </p>
                         } 
 
                         { 

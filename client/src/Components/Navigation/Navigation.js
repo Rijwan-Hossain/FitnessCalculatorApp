@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom'
 import './navbar.css'
 import logo from '../../Assets/Images/logo.png'
 
-class Navigation extends Component {
-    render() {
-        return (
+class Navigation extends Component { 
+    render() { 
+        return ( 
             <nav class="nav"> 
                 <div className="container"> 
                     <ul> 
@@ -17,7 +17,7 @@ class Navigation extends Component {
                         <li><NavLink className="color" to="/">Home</NavLink></li> 
                         <li>Gym 
                             <ul class="subList"> 
-                                <li>
+                                <li> 
                                     <NavLink className="subcolor" to="/mangym">
                                         Man
                                     </NavLink></li> 
@@ -27,18 +27,47 @@ class Navigation extends Component {
                                     </NavLink></li> 
                             </ul> 
                         </li> 
-                        <li>Diet 
+                        <li> 
+                            Diet 
                             <ul class="subList"> 
-                                <li><NavLink className="subcolor" to="/mandiet">Man</NavLink></li> 
-                                <li><NavLink className="subcolor" to="/womandiet">Woman</NavLink></li> 
+                                <li>
+                                    <NavLink className="subcolor" to="/mandiet">
+                                        Man
+                                    </NavLink>
+                                </li> 
+                                <li> 
+                                    <NavLink className="subcolor" to="/womandiet"> 
+                                        Woman
+                                    </NavLink> 
+                                </li> 
                             </ul> 
                         </li> 
-                        <li><NavLink className="color" to="/blog">Blog</NavLink></li> 
-                        <li><NavLink className="color" to="/groceries">Groceries</NavLink></li> 
-                        <li><NavLink className="color" to="/tutorials">Tutorials</NavLink></li> 
+                        <li> 
+                            <NavLink className="color" to="/blog"> 
+                                Blog 
+                            </NavLink> 
+                        </li> 
+                        <li> 
+                            <NavLink className="color" to="/groceries"> 
+                                Groceries
+                            </NavLink> 
+                        </li> 
+                        <li> 
+                            <NavLink className="color" to="/tutorials">
+                                Tutorials 
+                            </NavLink> 
+                        </li> 
                         
-                        <li><NavLink className="color" to="/profile">Profile</NavLink></li> 
-                        <li><NavLink className="color" to="/login">Login</NavLink></li> 
+                        <li> 
+                            <NavLink className="color" to="/profile"> 
+                                Profile 
+                            </NavLink> 
+                        </li> 
+                        <li> 
+                            <NavLink className="color" to="/login"> 
+                                Login 
+                            </NavLink> 
+                        </li> 
                     </ul> 
                 </div> 
             </nav> 

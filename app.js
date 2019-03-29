@@ -17,6 +17,7 @@ app.use(bodyParser.json())
 
 // Routers 
 app.use('/api/users', require('./Routes/userRoutes')) 
+app.use('/api/tutorials', require('./Routes/tutorialRoutes')) 
 
 
 

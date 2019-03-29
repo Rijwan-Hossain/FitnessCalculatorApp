@@ -18,7 +18,7 @@ const UserSchema = new Schema({
     gender: String, 
     weight: String, 
     ft: String, 
-    inch: String,
+    inch: String, 
     address: String 
 }, 
 { 

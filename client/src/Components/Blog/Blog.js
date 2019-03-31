@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import CreatePost from './CreatePost'
 import Search from './Search';
+import ShowPost from './ShowPost';
 
 class Blog extends Component { 
     render() { 
@@ -19,6 +20,7 @@ class Blog extends Component {
                         <Search /> 
                     </div> 
                 </div> 
+                <ShowPost /> 
             </div> 
         ) 
     } 

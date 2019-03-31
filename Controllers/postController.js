@@ -2,17 +2,18 @@ const Post = require('../Models/Post')
 const mongoose = require('mongoose')
 
 const createPost = (req, res) => { 
-    let { title, body, author } = req.body 
+    let { title, body, author, authorAvatar } = req.body 
     const post = new Post({ 
         title, 
         body, 
-        author 
+        author, 
+        authorAvatar 
     }) 
 
     post.save() 
         .then(result => { 
             res.json({ 
-                message: 'Post Uploaded' 
+                message: 'Post Uploaded'
             }) 
         }) 
         .catch(err => { 

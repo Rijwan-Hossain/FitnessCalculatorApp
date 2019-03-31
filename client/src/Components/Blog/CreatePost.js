@@ -4,17 +4,16 @@ import jwtDecode from 'jwt-decode'
 import axios from 'axios'
 import { Modal, ModalBody, Button, ModalFooter } from 'react-bootstrap' 
 
-const initState = { 
-    author: '', 
-    title: '',
-    body: '',
-    avatar: '', 
-    success: '', 
-    error: ''
-} 
 
 class CreatePost extends Component { 
-    state = initState
+    state = { 
+        author: '', 
+        title: '',
+        body: '',
+        avatar: '', 
+        success: '', 
+        error: ''
+    } 
 
     changeHandler = (e) => { 
         this.setState({ 
@@ -27,12 +26,15 @@ class CreatePost extends Component {
         let post = { 
             author: this.state.author,
             title: this.state.title,
-            body: this.state.body
+            body: this.state.body,
+            authorAvatar: this.state.avatar,
         } 
         axios.post('http://localhost:5000/api/posts', post) 
             .then(result => { 
                 this.setState({ 
-                    success: result.data.message 
+                    success: result.data.message, 
+                    title: '', 
+                    body: ''
                 }) 
             }) 
             .catch(err => { 
@@ -101,12 +103,15 @@ class CreatePost extends Component {
                                 ? 
                                 <img 
                                     src={this.state.avatar} 
-                                    height="65px" 
-                                    width="65px" 
-                                    className="rounded-circle"
+                                    height="70px" 
+                                    width="70px" 
+                                    className="rounded-circle" 
+                                    style={{ 
+                                        border: '3px solid rgb(218, 218, 218)'
+                                    }} 
                                     alt="avatar"/> 
                                 : 
-                                <div style={{height:'60px', width: '60px'}}></div>
+                                <div style={{height:'70px', width: '70px', background: 'grey'}}></div>
                             } 
                             <div className="media-body ml-2">
                                 <form onSubmit={this.submitHandler}> 
@@ -115,7 +120,7 @@ class CreatePost extends Component {
                                         name="title" 
                                         value={this.state.title} 
                                         className="form-control col-7 mb-2" 
-                                        placeholder="Give a title e.g. Leg problem"
+                                        placeholder="Give a title e.g. Neck pain"
                                         onChange={this.changeHandler} 
                                     /> 
                                     
@@ -161,7 +166,7 @@ class CreatePost extends Component {
                                         </ModalFooter> 
                                     </Modal> 
                                 } 
-                            </div>
+                            </div> 
                         </div> 
                     </div> 
                 } 

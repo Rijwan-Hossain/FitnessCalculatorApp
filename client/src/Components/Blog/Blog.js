@@ -20,7 +20,11 @@ class Blog extends Component {
                         <Search /> 
                     </div> 
                 </div> 
-                <ShowPost /> 
+                <div style={{margin: '0px',padding: '0px'}} className="col-7">
+                    <ShowPost /> 
+                </div> 
+
+                <div style={{height: '50px'}}></div>
             </div> 
         ) 
     } 

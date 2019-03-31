@@ -8,11 +8,11 @@ import { Modal, ModalBody, Button, ModalFooter } from 'react-bootstrap'
 class CreatePost extends Component { 
     state = { 
         author: '', 
-        title: '',
-        body: '',
+        title: '', 
+        body: '', 
         avatar: '', 
         success: '', 
-        error: ''
+        error: '' 
     } 
 
     changeHandler = (e) => { 
@@ -91,7 +91,7 @@ class CreatePost extends Component {
                     <div
                         className="mt-3"
                         style={{ 
-                            background: 'rgb(245, 245, 245)', 
+                            background: 'rgb(240, 240, 242)', 
                             padding: '8px', 
                             borderRadius: '5px' 
                         }}> 
@@ -103,8 +103,8 @@ class CreatePost extends Component {
                                 ? 
                                 <img 
                                     src={this.state.avatar} 
-                                    height="70px" 
-                                    width="70px" 
+                                    height="80px" 
+                                    width="80px" 
                                     className="rounded-circle" 
                                     style={{ 
                                         border: '3px solid rgb(218, 218, 218)'
@@ -122,6 +122,7 @@ class CreatePost extends Component {
                                         className="form-control col-7 mb-2" 
                                         placeholder="Give a title e.g. Neck pain"
                                         onChange={this.changeHandler} 
+                                        required 
                                     /> 
                                     
                                     <textarea 
@@ -131,13 +132,14 @@ class CreatePost extends Component {
                                         className="form-control mb-2" 
                                         placeholder={`Write your problem, ${this.state.author.split(' ')[0]}?`} 
                                         onChange={this.changeHandler} 
+                                        required 
                                         style={{ 
                                             height: '100px',
                                             resize: 'none'
                                         }} 
                                     /> 
         
-                                    <button className="btn btn-primary"> 
+                                    <button className="btn btn-dark"> 
                                         Submit 
                                     </button> 
                                     { 

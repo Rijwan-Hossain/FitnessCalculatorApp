@@ -17,11 +17,11 @@ class Navigation extends Component {
                         <li><NavLink className="color" to="/">Home</NavLink></li> 
                         <li>Gym 
                             <ul class="subList"> 
-                                <li> 
+                                <li style={{zIndex: '100'}}> 
                                     <NavLink className="subcolor" to="/mangym">
                                         Man
                                     </NavLink></li> 
-                                <li>
+                                <li style={{zIndex: '100'}}>
                                     <NavLink className="subcolor" to="/womangym">
                                         Woman
                                     </NavLink></li> 
@@ -30,12 +30,12 @@ class Navigation extends Component {
                         <li> 
                             Diet 
                             <ul class="subList"> 
-                                <li>
+                                <li style={{zIndex: '100'}}>
                                     <NavLink className="subcolor" to="/mandiet">
                                         Man
                                     </NavLink>
                                 </li> 
-                                <li> 
+                                <li style={{zIndex: '100'}}> 
                                     <NavLink className="subcolor" to="/womandiet"> 
                                         Woman
                                     </NavLink> 

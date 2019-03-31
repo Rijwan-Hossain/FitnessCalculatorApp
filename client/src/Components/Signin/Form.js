@@ -34,18 +34,18 @@ class Form extends Component {
     } 
 
 
-    changeHandler = (e) => {
-        this.setState({
+    changeHandler = (e) => { 
+        this.setState({ 
             [e.target.name]: e.target.value
-        })
-    }
+        }) 
+    } 
 
-    submitHandler = (e) => {
-        e.preventDefault();
-        let user = {
+    submitHandler = (e) => { 
+        e.preventDefault(); 
+        let user = { 
             email: this.state.email,
             password: this.state.password
-        }
+        } 
 
         axios.post('http://localhost:5000/api/users/login', user)
             .then(result => {
@@ -72,7 +72,7 @@ class Form extends Component {
                     
                     setTimeout(() => {
                         this.props.history.push('/profile');
-                    }, 2200) 
+                    }, 1500) 
                 }
             })
             .catch(err => {
@@ -117,7 +117,7 @@ class Form extends Component {
 
                 {
                     this.state.serverError && 
-                    <Modal show={true}>
+                    <Modal show={true}> 
                         <ModalBody>
                             Server Error Occured 
                         </ModalBody> 

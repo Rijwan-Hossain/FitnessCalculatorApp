@@ -18,6 +18,7 @@ app.use(bodyParser.json())
 // Routers 
 app.use('/api/users', require('./Routes/userRoutes')) 
 app.use('/api/tutorials', require('./Routes/tutorialRoutes')) 
+app.use('/api/posts', require('./Routes/postRoutes')) 
 
 
 
@@ -29,7 +30,7 @@ app.listen(PORT, () => {
     mongoose.connect('mongodb://localhost:27017/fitnessapp', 
     {useNewUrlParser: true}, 
     () => { 
-        console.log('Database Running');
+        console.log('Database Running'); 
     }); 
 }) 
 

@@ -3,14 +3,12 @@ let Tutorial = require('../Models/Tutorial')
 
 let createTutorial = (req, res) => { 
     let { question, solution } = req.body 
-    console.log(question) 
-    console.log(solution) 
 
     let tutorial = new Tutorial({ 
         question, 
         solution 
     }) 
-
+    
     tutorial.save() 
         .then(result => { 
             res.json({ 
@@ -20,8 +18,7 @@ let createTutorial = (req, res) => {
         }) 
         .catch(err => { 
             res.json({ 
-                message: 'Server Error', 
-                err 
+                message: 'Server Error'
             }) 
         }) 
 } 
@@ -39,8 +36,7 @@ let getAllTutorial = (req, res) => {
         }) 
         .catch(err => { 
             res.json({ 
-                message: 'Server Error', 
-                err 
+                message: 'Server Error'
             }) 
         }) 
 } 
@@ -59,8 +55,7 @@ let getSingleTutorial = (req, res) => {
         }) 
         .catch(err => { 
             res.json({ 
-                message: 'Server Error', 
-                err 
+                message: 'Server Error'
             }) 
         }) 
 } 
@@ -72,9 +67,9 @@ let getSingleTutorial = (req, res) => {
 let updateTutorial = (req, res) => { 
     let id  = req.params.id 
 
-    let updatedValue = req.body 
+    // let updatedValue = req.body 
 
-    Tutorial.findOneAndUpdate({_id: id}, updatedValue, { new: true }) 
+    Tutorial.findOneAndUpdate({_id: id}, {$set: req.body}, { new: true }) 
         .then(result => { 
             res.json({ 
                 message: 'Updated successfully', 
@@ -83,15 +78,14 @@ let updateTutorial = (req, res) => {
         }) 
         .catch(err => { 
             res.json({ 
-                message: 'Server Error', 
-                err 
+                message: 'Server Error'
             }) 
         }) 
 } 
 
 
 
-
+// Delete 
 let deleteTutorial = (req, res) => { 
     let id  = req.params.id 
     Tutorial.findOneAndDelete(id) 
@@ -102,8 +96,7 @@ let deleteTutorial = (req, res) => {
         }) 
         .catch(err => { 
             res.json({ 
-                message: 'Server Error', 
-                err 
+                message: 'Server Error'
             }) 
         }) 
 } 

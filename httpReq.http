@@ -1,4 +1,134 @@
 
+
+
+# ------------------------------------------------------ #
+#                         Comment                        #
+# ------------------------------------------------------ #
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ------------------------------------------------------ #
+#                         Post                           #
+# ------------------------------------------------------ #
+
+# Create Post 
+###
+POST http://localhost:5000/api/posts HTTP/1.1 
+content-type: application/json 
+
+{ 
+    "title": "adcg hy fgfgtfyt kjh?", 
+    "body": "qrstuv wxyz ghijk abcdef lmnop.", 
+    "author": "Rijwan Hossain"
+} 
+
+
+// Get All Post
+###
+GET http://localhost:5000/api/posts HTTP/1.1
+
+
+// Get Single Post
+###
+GET http://localhost:5000/api/posts/5c9e989c771e480dc8979234 HTTP/1.1
+
+
+// Update Post
+###
+PATCH http://localhost:5000/api/posts/5c9e989c771e480dc8979234 HTTP/1.1 
+content-type: application/json 
+
+{ 
+    "title": "adcg hy fgfgtfyt kjh?", 
+    "body": "abcdef ghijk lmnop qrstuv wxyz.", 
+    "author": "Rijwan Hossain"
+} 
+
+
+// Delete Post
+###
+DELETE http://localhost:5000/api/posts/5c9e9893771e480dc8979233 HTTP/1.1
+
+
+
+
+
+
+
+
+
+
+# ------------------------------------------------------ #
+#                       Tutorial                         #
+# ------------------------------------------------------ #
+
+
+###
+// Create Tutorial
+POST http://localhost:5000/api/tutorials HTTP/1.1
+content-type: application/json
+
+{ 
+    "question": "How to remove belly fat", 
+    "solution": "qrstuv wxyz ghijk abcdef lmnop."
+} 
+
+
+###
+// Get All Tutorial
+GET http://localhost:5000/api/tutorials HTTP/1.1
+
+
+###
+// Get single Tutorial
+GET http://localhost:5000/api/tutorials/5c9de113128e870604a41dcf HTTP/1.1
+
+
+### 
+// Update Tutorial
+PATCH http://localhost:5000/api/tutorials/5c9e729a1a90972320276b8b HTTP/1.1
+content-type: application/json
+
+{ 
+    "question": "How fat stored in belly", 
+    "solution": "abcdef ghijk lmnop qrstu vwxyz."
+} 
+
+
+
+###
+// Delete Tutorial 
+DELETE http://localhost:5000/api/tutorials/5c9de113128e870604a41dcf HTTP/1.1
+
+
+
+
+
+
+
+
+
+
+
+
+# ------------------------------------------------------ #
+#                         User                           #
+# ------------------------------------------------------ #
+
 // Create ID
 POST http://localhost:5000/api/users/register HTTP/1.1
 content-type: application/json
@@ -55,55 +185,4 @@ content-type: application/json
 ###
 
 DELETE http://localhost:5000/api/users/register/5c9aaa64eb1be60d981db9e0 HTTP/1.1 
-
-
-
-
-
-
-
-
-
-
-// Tutorials 
-
-###
-// Create Tutorial
-POST http://localhost:5000/api/tutorials HTTP/1.1
-content-type: application/json
-
-{ 
-    "question": "How to remove belly fat", 
-    "solution": "qrstuv wxyz ghijk abcdef lmnop."
-} 
-
-
-###
-// Get All Tutorial
-GET http://localhost:5000/api/tutorials HTTP/1.1
-
-
-###
-// Get single Tutorial
-GET http://localhost:5000/api/tutorials/5c9de113128e870604a41dcf HTTP/1.1
-
-
-### 
-// Update Tutorial
-PATCH http://localhost:5000/api/tutorials/5c9de113128e870604a41dcf HTTP/1.1
-content-type: application/json
-
-{ 
-    "question": "How fat stored in belly", 
-    "solution": "abcdef ghijk lmnop qrstu vwxyz."
-} 
-
-
-
-###
-// Delete Tutorial 
-DELETE http://localhost:5000/api/tutorials/5c9de113128e870604a41dcf HTTP/1.1
-
-
-
 

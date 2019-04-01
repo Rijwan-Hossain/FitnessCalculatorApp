@@ -5,16 +5,24 @@ import Search from './Search';
 import ShowPost from './ShowPost';
 
 class Blog extends Component { 
-    
+    state = {
+        reload: false 
+    } 
+
+    postRefresher = () => { 
+        this.setState({ 
+            reload: true 
+        }) 
+    } 
     
     render() { 
         return ( 
             <div className="container"> 
-                <div className="d-flex">
+                <div className="d-flex"> 
                     <div 
                         style={{margin: '0px',padding: '0px'}} 
                         className="col-7">
-                        <CreatePost />  
+                        <CreatePost refreshFun={this.postRefresher} />  
                     </div> 
                     <div 
                         style={{margin: '0px',padding: '0px'}} 
@@ -23,7 +31,14 @@ class Blog extends Component {
                     </div> 
                 </div> 
                 <div style={{margin: '0px',padding: '0px'}} className="col-7">
-                    <ShowPost /> 
+                    {
+                        this.state.reload 
+                        ? 
+                        <ShowPost reload={this.state.reload} /> 
+                        : 
+                        <ShowPost /> 
+                    }
+                    
                 </div> 
 
                 <div style={{height: '50px'}}></div>

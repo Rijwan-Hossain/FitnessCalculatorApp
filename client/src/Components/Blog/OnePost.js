@@ -12,7 +12,6 @@ class OnePost extends Component {
         try { 
             let token = localStorage.getItem('token').split(' ')[1] 
             let user = jwtDecode(token) 
-            console.log(user.email) 
             
             if(user.email) { 
                 let postId  = this.props.post._id 
@@ -126,11 +125,13 @@ class OnePost extends Component {
                 <div> 
                     { 
                         this.state.showMsg && 
-                        <p style={{fontSize: '14px'}} className="text-center text-danger"> 
+                        <p 
+                            style={{fontSize: '14px', paddingBottom: '0px', marginBottom: '0px'}} 
+                            className="text-center text-danger"> 
                             Signin to like or comment
                         </p> 
                     } 
-                </div>
+                </div> 
             </li> 
         ) 
     } 

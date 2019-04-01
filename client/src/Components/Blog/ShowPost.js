@@ -8,6 +8,7 @@ class ShowPost extends Component {
         posts: [] 
     } 
 
+    
 
     pageRefreser = () => { 
         setTimeout(async () => {
@@ -36,6 +37,10 @@ class ShowPost extends Component {
 
 
     render() { 
+        if(this.props.reload) { 
+            this.pageRefreser() 
+        } 
+
         return ( 
             <div className="mt-3"> 
                 { 

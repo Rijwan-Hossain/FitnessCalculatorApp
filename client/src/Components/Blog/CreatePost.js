@@ -139,7 +139,9 @@ class CreatePost extends Component {
                                         }} 
                                     /> 
         
-                                    <button className="btn btn-dark"> 
+                                    <button 
+                                        onClick={this.props.refreshFun} 
+                                        className="btn btn-dark"> 
                                         Submit 
                                     </button> 
                                     { 

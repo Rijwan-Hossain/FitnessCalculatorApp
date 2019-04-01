@@ -34,7 +34,7 @@ class CreatePost extends Component {
                 this.setState({ 
                     success: result.data.message, 
                     title: '', 
-                    body: ''
+                    body: '' 
                 }) 
             }) 
             .catch(err => { 
@@ -82,10 +82,10 @@ class CreatePost extends Component {
                     ? 
                     <p 
                         style={{ 
-                            fontSize: '45px'
+                            fontSize: '40px'
                         }}
                         className="display-4 text-danger my-1"> 
-                        Signin to post your problem 
+                        Signin to write about your problem 
                     </p> 
                     : 
                     <div

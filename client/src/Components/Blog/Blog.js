@@ -15,8 +15,8 @@ class Blog extends Component {
                         style={{margin: '0px',padding: '0px'}} 
                         className="col-7">
                         <CreatePost />  
-                    </div>
-                    <div
+                    </div> 
+                    <div 
                         style={{margin: '0px',padding: '0px'}} 
                         className="col-5">
                         <Search /> 

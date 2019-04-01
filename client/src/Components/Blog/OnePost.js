@@ -4,27 +4,41 @@ import axios from 'axios'
 
 class OnePost extends Component { 
     state = { 
-        likeButtonClick: false, 
-        name: ''
+        showMsg: false 
     } 
 
     
     likeHandler = () => { 
-        let postId  = this.props.post._id 
-        axios.get(`http://localhost:5000/api/posts/${postId}/like`) 
-            .then(result => { 
-                this.setState({ name: 'Rijwan', likeButtonClick: true }) 
-            }) 
-            .catch(err => { 
-                console.log('Error Occured') 
-            }) 
+        try { 
+            let token = localStorage.getItem('token').split(' ')[1] 
+            let user = jwtDecode(token) 
+            console.log(user.email) 
+            
+            if(user.email) { 
+                let postId  = this.props.post._id 
+                axios.get(`http://localhost:5000/api/posts/${postId}/like`) 
+            } 
+        } 
+        catch (error) { 
+            this.notAuthenticted() 
+        } 
     } 
 
+    notAuthenticted = () => {
+        this.setState({ 
+            showMsg: true 
+        }) 
 
+        setTimeout(() => {
+            this.setState({ 
+                showMsg: false 
+            }) 
+        }, 2500)
+    }
 
 
     render() { 
-        let { author, authorAvatar, title, body, like, comments, likeButtonClick } = this.props.post
+        let { author, authorAvatar, title, body, like, comments } = this.props.post
         
         return ( 
             <li 
@@ -111,8 +125,8 @@ class OnePost extends Component {
                 </div> 
                 <div> 
                     { 
-                        likeButtonClick && 
-                        <p style={{fontSize: '10px'}} className="text-danger"> 
+                        this.state.showMsg && 
+                        <p style={{fontSize: '14px'}} className="text-center text-danger"> 
                             Signin to like or comment
                         </p> 
                     } 
@@ -132,20 +146,7 @@ export default OnePost
 
 
  
-        // try { 
-        //     // let token = localStorage.getItem('token').split(' ')[1] 
-        //     // let user = jwtDecode(token) 
-            
-        //     // if(user) { 
-                
-        //     // } 
-        //     // else { 
-        //     //     this.setState({ 
-        //     //         likeButtonClick: true
-        //     //     }) 
-        //     // } 
-        // } 
-        // catch (error) {} 
+        
 
 
 

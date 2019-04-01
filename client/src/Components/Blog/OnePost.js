@@ -1,9 +1,30 @@
 import React, { Component } from 'react'
+import jwtDecode from 'jwt-decode'
+import axios from 'axios'
 
 class OnePost extends Component { 
+    state = { 
+        likeButtonClick: false, 
+        name: ''
+    } 
+
+    
+    likeHandler = () => { 
+        let postId  = this.props.post._id 
+        axios.get(`http://localhost:5000/api/posts/${postId}/like`) 
+            .then(result => { 
+                this.setState({ name: 'Rijwan', likeButtonClick: true }) 
+            }) 
+            .catch(err => { 
+                console.log('Error Occured') 
+            }) 
+    } 
+
+
+
+
     render() { 
-        let post = this.props.post 
-        let { author, authorAvatar, title, body, like, comments } = post
+        let { author, authorAvatar, title, body, like, comments, likeButtonClick } = this.props.post
         
         return ( 
             <li 
@@ -53,9 +74,9 @@ class OnePost extends Component {
                         { 
                             like > 1 
                             ? 
-                            `${like} likes`
+                            `${like} Likes`
                             : 
-                            `${like} like`
+                            `${like} Like`
                         } 
                     </p> 
                     <p style={{
@@ -64,19 +85,21 @@ class OnePost extends Component {
                         { 
                             comments.length > 1 
                             ? 
-                            `${comments.length} comments`
+                            `${comments.length} Comments`
                             : 
-                            `${comments.length} comment`
+                            `${comments.length} Comment`
                         } 
                     </p> 
                 </div>
                 <div className="d-flex justify-content-around"> 
                     <button 
-                        style={{
-                            margin: '5px', padding: '5px'
-                        }}
+                        onClick={() => { 
+                            this.likeHandler(); 
+                            this.props.refreshFun() 
+                        }} 
+                        style={{margin: '5px', padding: '5px'}}
                         className="btn btn-block btn-info">
-                        Like
+                        Like 
                     </button> 
                     <button 
                         style={{
@@ -86,9 +109,46 @@ class OnePost extends Component {
                         Comment
                     </button> 
                 </div> 
+                <div> 
+                    { 
+                        likeButtonClick && 
+                        <p style={{fontSize: '10px'}} className="text-danger"> 
+                            Signin to like or comment
+                        </p> 
+                    } 
+                </div>
             </li> 
         ) 
     } 
 } 
 
 export default OnePost 
+
+
+
+
+
+
+
+
+ 
+        // try { 
+        //     // let token = localStorage.getItem('token').split(' ')[1] 
+        //     // let user = jwtDecode(token) 
+            
+        //     // if(user) { 
+                
+        //     // } 
+        //     // else { 
+        //     //     this.setState({ 
+        //     //         likeButtonClick: true
+        //     //     }) 
+        //     // } 
+        // } 
+        // catch (error) {} 
+
+
+
+
+
+

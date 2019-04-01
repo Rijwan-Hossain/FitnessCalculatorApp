@@ -44,7 +44,7 @@ GET http://localhost:5000/api/posts HTTP/1.1
 
 // Get Single Post
 ###
-GET http://localhost:5000/api/posts/5c9e989c771e480dc8979234 HTTP/1.1
+GET http://localhost:5000/api/posts/5ca086875e711d09a857e351 HTTP/1.1
 
 
 // Update Post
@@ -62,6 +62,12 @@ content-type: application/json
 // Delete Post
 ###
 DELETE http://localhost:5000/api/posts/5ca0ebb60f7f8e0c408c470f HTTP/1.1
+
+
+
+// Like Post
+###
+GET http://localhost:5000/api/posts/5ca086875e711d09a857e351/like HTTP/1.1
 
 
 

@@ -5,6 +5,8 @@ import Search from './Search';
 import ShowPost from './ShowPost';
 
 class Blog extends Component { 
+    
+    
     render() { 
         return ( 
             <div className="container"> 

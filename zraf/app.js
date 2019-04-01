@@ -1,15 +1,23 @@
 
 
-// setInterval 
+// Data type 
 
-var time = setInterval(function() {
-    console.log('Omar Faruk');
-}, 3000) 
+// Mutable & immutble
 
-
-clearInterval(time) 
-
+let arr1 = [34, 75, 'hgfs', true] 
+let arr2 = [...arr1]
+arr2[3] = false
 
 
+arr1
+arr2
+
+
+
+// -------------------------
+
+// a = 5; 
+// b = a 
+// b = 2; 
 
 

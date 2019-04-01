@@ -7,7 +7,8 @@ const createPost = (req, res) => {
         title, 
         body, 
         author, 
-        authorAvatar 
+        authorAvatar, 
+        like: 0
     }) 
 
     post.save() 
@@ -114,12 +115,35 @@ const deletePost = (req, res) => {
 } 
 
 
+// Like Post 
+const likePost = (req, res) => { 
+    console.log('Hello Like');
+    
+    let id = req.params.postId 
+    console.log(id);
+
+    Post.findById(id) 
+        .then(post => {
+            Post.findByIdAndUpdate(id, {$set: {like: post.like + 1}}, {new: true}) 
+                .then(updatedPost => { 
+                    res.json({ 
+                        message: '1 like added'
+                    }) 
+                }) 
+        })
+        .catch(err => { 
+            res.json({ 
+                message: 'Server Error' 
+            }) 
+        }) 
+} 
 
 module.exports = { 
     createPost,  
     getAllPost, 
     getSinglePost, 
     updatePost, 
-    deletePost 
+    deletePost, 
+    likePost
 } 
 

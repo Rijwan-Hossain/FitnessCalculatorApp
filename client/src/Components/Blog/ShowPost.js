@@ -4,35 +4,48 @@ import OnePost from './OnePost';
 
 class ShowPost extends Component { 
     state = { 
+        pageRefresh: false, 
         posts: [] 
     } 
 
-    componentDidMount() {
-        axios.get('http://localhost:5000/api/posts') 
-            .then(result => {
-                this.setState({ 
-                    posts: result.data.data.reverse() 
-                }) 
+
+    pageRefreser = () => { 
+        setTimeout(async () => {
+            const result = await axios.get('http://localhost:5000/api/posts') 
+            this.setState({ 
+                posts: result.data.data.reverse() 
             }) 
-            .catch(err => { 
-                console.log(err); 
-            }) 
+        }, 10) 
     } 
 
-    clickHandler = () => {
-        return ({
-            border: 'blue', 
-            background: 'white'
-        }) 
-    }
+
+
+    componentDidMount() { 
+        try {
+            axios.get('http://localhost:5000/api/posts') 
+                .then(result => { 
+                    this.setState({ 
+                        posts: result.data.data.reverse() 
+                    }) 
+                }) 
+                .catch(err => { 
+                    console.log(err); 
+                }) 
+        } catch (error) {} 
+    } 
+
 
     render() { 
         return ( 
-            <div onClick={this.clickHandler} className="mt-3"> 
+            <div className="mt-3"> 
                 { 
                     this.state.posts.map((post, i) => { 
                         return ( 
-                            <OnePost post={post} key={i}/> 
+                            <OnePost 
+                                refreshFun={ this.pageRefreser } 
+                                post={post} 
+                                key={i} 
+                            /> 
                         ) 
                     }) 
                 } 

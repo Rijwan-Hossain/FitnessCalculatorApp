@@ -1,23 +1,22 @@
 
 
-// Data type 
 
-// Mutable & immutble
+// Object 
 
-let arr1 = [34, 75, 'hgfs', true] 
-let arr2 = [...arr1]
-arr2[3] = false
+var user1 = {
+    name: 'Omar Faruk', 
+    isAuthenticated: false, 
+    age: 23, 
+    skills: {
+        php: '70%', 
+        js: '80%', 
+        html: '75%'
+    }, 
+    func: () => { 
+        for(let i in user1.skills) { 
+            console.log(`${user1.name}\'s skill on ${i.toUpperCase()} is ${user1.skills[i]}`); 
+        } 
+    } 
+} 
 
-
-arr1
-arr2
-
-
-
-// -------------------------
-
-// a = 5; 
-// b = a 
-// b = 2; 
-
-
+user1.func();  

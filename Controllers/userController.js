@@ -197,7 +197,7 @@ let updateUser = (req, res) => {
             else { 
                 res.json({ 
                     message: 'Updated Successfully',
-                    user 
+                    updatedUser 
                 }) 
             } 
         }) 

@@ -39,7 +39,7 @@ content-type: application/json
 
 // Get All Post
 ###
-GET http://localhost:5000/api/posts HTTP/1.1
+GET http://localhost:5000/api/posts?per=3&page=1 HTTP/1.1
 
 
 // Get Single Post
@@ -191,4 +191,44 @@ content-type: application/json
 ###
 
 DELETE http://localhost:5000/api/users/register/5c9aaa64eb1be60d981db9e0 HTTP/1.1 
+
+
+
+
+
+
+
+
+# ---------------------------------------------- #
+#                      Admin                     #
+# ---------------------------------------------- #
+
+### 
+// register
+GET http://localhost:5000/api/admin/adminregister HTTP/1.1
+
+// get admin profile
+###
+GET http://localhost:5000/api/admin/getadmin HTTP/1.1
+
+// delete admin 
+###
+DELETE http://localhost:5000/api/admin/adminregister/5ca6a5c33f2dee0f001fbbd0 HTTP/1.1
+
+
+### 
+// Login 
+POST http://localhost:5000/api/admin/adminlogin HTTP/1.1
+content-type: application/json 
+
+{
+    "email": "rijyan.cse.152@gmail.com", 
+    "password": "152002007"
+}
+
+
+
+
+
+
 

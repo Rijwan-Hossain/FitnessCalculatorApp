@@ -5,7 +5,6 @@ import axios from 'axios'
 import './profileStyle.css'
 
 class Profile extends Component { 
-
     state = { 
         user: {} 
     } 

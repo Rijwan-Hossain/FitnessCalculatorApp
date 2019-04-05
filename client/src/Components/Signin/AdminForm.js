@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import { NavLink, withRouter } from 'react-router-dom'
-import axios from 'axios'
-import './Form.css'
-import jwtDecode from 'jwt-decode'
 import {Modal, ModalBody, Button, ModalFooter } from 'react-bootstrap'
-
+import {  withRouter } from 'react-router-dom'
+import axios from 'axios' 
+import jwtDecode from 'jwt-decode' 
 
 const initState = {
     email: '',
@@ -16,8 +14,9 @@ const initState = {
     successMessage: ''
 } 
 
-class Form extends Component {
-    state = initState;
+class AdminForm extends Component { 
+    state = initState; 
+
 
     errorHandler = (e) => { 
         e.preventDefault(); 
@@ -33,7 +32,6 @@ class Form extends Component {
         }) 
     } 
 
-
     changeHandler = (e) => { 
         this.setState({ 
             [e.target.name]: e.target.value
@@ -42,24 +40,26 @@ class Form extends Component {
 
     submitHandler = (e) => { 
         e.preventDefault(); 
-        let user = { 
-            email: this.state.email,
-            password: this.state.password
+        let consultant = { 
+            email: this.state.email, 
+            password: this.state.password 
         } 
 
-        axios.post('http://localhost:5000/api/users/login', user)
-            .then(result => {
-                if (Object.keys(result.data).length === 1) {
-                    this.setState({
-                        errorMessage: result.data.message
+        axios.post('http://localhost:5000/api/admin/adminlogin', consultant) 
+            .then(result => { 
+                if (Object.keys(result.data).length === 1) { 
+                    this.setState({ 
+                        errorMessage: result.data.message 
                     }) 
                 } 
                 else if (Object.keys(result.data).length === 2) {
-                    localStorage.setItem('token', result.data.token)
-                    let user = jwtDecode(result.data.token)
+                    localStorage.setItem('token', result.data.token) 
+                    console.log(result.data.token); 
+                    
+                    let user = jwtDecode(result.data.token) 
                     this.setState({ 
-                        successMessage: result.data.message,
-                        user: user 
+                        successMessage: result.data.message, 
+                        user: user  
                     }) 
                     
                     let { token } = result.data 
@@ -73,14 +73,17 @@ class Form extends Component {
                     setTimeout(() => {
                         this.props.history.push('/profile');
                     }, 1500) 
-                }
-            })
+                } 
+            }) 
             .catch(err => {
                 this.setState({
                     serverError: true
                 })
-            })
+            }) 
     } 
+
+
+
 
     render() {
         return (
@@ -89,8 +92,8 @@ class Form extends Component {
                     padding: '30px',
                     border: '1px solid rgb(238, 238, 238)',
                     boxShadow: '0px 2px 4px 0px rgb(226, 226, 226)'
-                }}
-            >
+                }} 
+            > 
                 <form onSubmit={this.submitHandler}>
                     <div className="form-group">
                         <input
@@ -113,8 +116,18 @@ class Form extends Component {
                     <button className="btn btn-primary">
                         Submit
                     </button>
-                </form>
-
+                </form> 
+                <p 
+                    className="text-success"
+                    style={{ 
+                        marginTop: '15px',
+                        textAlign: 'justify', 
+                        fontSize: '0.8rem'
+                    }}
+                > 
+                    You will recieve 4 digit verification code in your mobile after successful submission. 
+                </p> 
+                
                 {
                     this.state.serverError && 
                     <Modal show={true}> 
@@ -124,7 +137,7 @@ class Form extends Component {
 
                         <ModalFooter>
                             <Button onClick={this.serverError}>
-                                close
+                                close 
                             </Button> 
                         </ModalFooter>
                     </Modal> 
@@ -152,29 +165,77 @@ class Form extends Component {
                         </ModalBody> 
                     </Modal> 
                 } 
+            </div> 
+        ) 
+    } 
+} 
 
-                <p style={{
-                    paddingTop: '20px'
-                }}>
-                    No Account, {' '}
-                    <NavLink
-                        id="reg"
-                        to="/registration">
-                        Create One
-                    </NavLink>
-                </p> 
+export default withRouter(AdminForm) 
 
-                <p>
-                    Consultant, {' '}
-                    <NavLink 
-                        id="admin" 
-                        to="/admin"> 
-                        login
-                    </NavLink>
-                </p> 
-            </div>
-        )
-    }
-}
 
-export default withRouter(Form);
+
+
+
+
+
+
+
+
+
+
+
+
+
+// {
+//     this.state.serverError && 
+//     <Modal show={true}> 
+//         <ModalBody>
+//             Server Error Occured 
+//         </ModalBody> 
+
+//         <ModalFooter>
+//             <Button onClick={this.serverError}>
+//                 close
+//             </Button> 
+//         </ModalFooter>
+//     </Modal> 
+// } 
+
+// { 
+//     this.state.errorMessage && 
+//     <Modal show={true}>
+//         <ModalBody>
+//             {this.state.errorMessage}
+//         </ModalBody> 
+//         <ModalFooter>
+//             <Button onClick={this.errorHandler}>
+//                 close
+//             </Button> 
+//         </ModalFooter>
+//     </Modal> 
+// } 
+
+// { 
+//     this.state.successMessage && 
+//     <Modal show={true}> 
+//         <ModalBody> 
+//             { this.state.successMessage } 
+//         </ModalBody> 
+//     </Modal> 
+// } 
+
+// <p style={{
+//     paddingTop: '20px'
+// }}> 
+//     No Account, {' '} 
+//     <NavLink id="reg" to="/registration"> 
+//         Create One
+//     </NavLink>
+// </p> 
+
+// <p> 
+//     Admin, {' '} 
+//     <NavLink id="admin" to="/admin"> 
+//         login
+//     </NavLink> 
+// </p> 

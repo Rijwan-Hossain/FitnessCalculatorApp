@@ -6,7 +6,7 @@ import logo from '../../Assets/Images/logo.png'
 class Navigation extends Component { 
     render() { 
         return ( 
-            <nav class="nav"> 
+            <nav class="nav" style={{height: '65px'}}> 
                 <div className="container"> 
                     <ul> 
                         <li className="logo"> 
@@ -15,41 +15,15 @@ class Navigation extends Component {
                             </NavLink> 
                         </li> 
                         <li><NavLink className="color" to="/">Home</NavLink></li> 
-                        <li>Gym 
-                            <ul class="subList"> 
-                                <li style={{zIndex: '100'}}> 
-                                    <NavLink className="subcolor" to="/mangym">
-                                        Man
-                                    </NavLink></li> 
-                                <li style={{zIndex: '100'}}>
-                                    <NavLink className="subcolor" to="/womangym">
-                                        Woman
-                                    </NavLink></li> 
-                            </ul> 
-                        </li> 
+                        
                         <li> 
-                            Diet 
-                            <ul class="subList"> 
-                                <li style={{zIndex: '100'}}>
-                                    <NavLink className="subcolor" to="/mandiet">
-                                        Man
-                                    </NavLink>
-                                </li> 
-                                <li style={{zIndex: '100'}}> 
-                                    <NavLink className="subcolor" to="/womandiet"> 
-                                        Woman
-                                    </NavLink> 
-                                </li> 
-                            </ul> 
+                            <NavLink className="color" to="/diet"> 
+                                Diet Plan 
+                            </NavLink> 
                         </li> 
                         <li> 
                             <NavLink className="color" to="/blog"> 
                                 Blog 
-                            </NavLink> 
-                        </li> 
-                        <li> 
-                            <NavLink className="color" to="/groceries"> 
-                                Groceries
                             </NavLink> 
                         </li> 
                         <li> 

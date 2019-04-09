@@ -50,17 +50,24 @@ class CreatePost extends Component {
         try {
             let token = localStorage.getItem('token').split(' ')[1] 
             let user = jwtDecode(token) 
-            axios.get(`http://localhost:5000/api/users/register/${user.id}`)
-                .then(result => {
-                    let { user } = result.data;
-                    this.setState({ 
-                        author: user.name, 
-                        avatar: user.avatar 
+
+            if(user.email === 'rijyan.cse.152@gmail.com') 
+            this.setState({ 
+                author: user.name 
+            }) 
+            else { 
+                axios.get(`http://localhost:5000/api/users/register/${user.id}`)
+                    .then(result => {
+                        let { user } = result.data 
+                        this.setState({ 
+                            author: user.name, 
+                            avatar: user.avatar 
+                        }) 
                     }) 
-                }) 
-                .catch(err => { 
-                    console.log('Server Error');
-                }) 
+                    .catch(err => { 
+                        console.log('Server Error') 
+                    }) 
+            } 
         } catch (error) {} 
     } 
 

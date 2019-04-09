@@ -4,28 +4,35 @@
     padding: 0; 
 } 
 
+ul li:hover { 
+    padding-bottom: 7px;
+    background: rgb(202, 178, 43);
+    -webkit-transition: .1s; /* Safari */
+    transition: .5s;
+} 
+
 ul li:nth-child(2) { 
     width: 85px; 
 } 
 
 ul li:nth-child(3) { 
-    width: 65px; 
+    width: 100px; 
 } 
 
 ul li:nth-child(4) { 
-    width: 65px; 
+    width: 75px; 
 } 
 
 ul li:nth-child(5) { 
-    width: 65px; 
+    width: 90px; 
 } 
 
 ul li:nth-child(6) { 
-    width: 120px; 
+    width: 90px; 
 } 
 
-ul li:nth-child(9) { 
-    width: 65px; 
+ul li:nth-child(7) { 
+    width: 70px; 
 } 
 
 .nav { 

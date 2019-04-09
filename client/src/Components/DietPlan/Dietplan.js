@@ -1,13 +1,14 @@
 import React, { Component } from 'react' 
 
-class Gymwoman extends Component { 
+class Dietman extends Component { 
     render() { 
         return ( 
             <div> 
-                <h1>Gym Woman Page</h1> 
+                <h1>Diet man Page</h1> 
             </div> 
         ) 
     } 
 } 
 
-export default Gymwoman; 
+export default Dietman; 
+

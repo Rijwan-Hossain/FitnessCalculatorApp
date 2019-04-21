@@ -4,6 +4,25 @@ import './navbar.css'
 import logo from '../../Assets/Images/logo.png'
 
 class Navigation extends Component { 
+    state = { 
+        isAuthentic: false 
+    } 
+
+    
+
+    componentDidMount() { 
+        try {
+            let token = localStorage.getItem('token').split(' ')[1] 
+            if(token) { 
+                this.setState({ 
+                    isAuthentic: true 
+                }) 
+            } 
+        } catch (error) { 
+            
+        } 
+    } 
+
     render() { 
         return ( 
             <nav class="nav" style={{height: '65px'}}> 
@@ -14,8 +33,11 @@ class Navigation extends Component {
                                 <img src={logo} width="35px" alt="App Logo"/>
                             </NavLink> 
                         </li> 
-                        <li><NavLink className="color" to="/">Home</NavLink></li> 
-                        
+                        <li> 
+                            <NavLink className="color" to="/"> 
+                                Home 
+                            </NavLink> 
+                        </li> 
                         <li> 
                             <NavLink className="color" to="/diet"> 
                                 Diet Plan 
@@ -37,6 +59,7 @@ class Navigation extends Component {
                                 Profile 
                             </NavLink> 
                         </li> 
+
                         <li> 
                             <NavLink className="color" to="/login"> 
                                 Login 

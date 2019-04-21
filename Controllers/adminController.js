@@ -72,13 +72,9 @@ let getAdmin = (req, res) => {
 // Login 
 let adminLogin = (req, res) => { 
     let { email, password } = req.body 
-
-    if(email.search('@') === -1) { 
-        res.json({ 
-            message: 'Admin, Enter a valid email' 
-        }) 
-    } 
-
+    console.log(email);
+    console.log(password);
+    
 
     Admin.findOne({email}) 
         .then(admin => { 

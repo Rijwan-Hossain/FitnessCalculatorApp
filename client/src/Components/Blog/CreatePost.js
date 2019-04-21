@@ -52,12 +52,14 @@ class CreatePost extends Component {
             let user = jwtDecode(token) 
 
             if(user.email === 'rijyan.cse.152@gmail.com') 
-            this.setState({ 
-                author: user.name 
-            }) 
+            { 
+                this.setState({ 
+                    author: user.name 
+                }) 
+            } 
             else { 
                 axios.get(`http://localhost:5000/api/users/register/${user.id}`)
-                    .then(result => {
+                    .then(result => { 
                         let { user } = result.data 
                         this.setState({ 
                             author: user.name, 
@@ -65,7 +67,7 @@ class CreatePost extends Component {
                         }) 
                     }) 
                     .catch(err => { 
-                        console.log('Server Error') 
+                        console.log('Server Error or connection lost') 
                     }) 
             } 
         } catch (error) {} 

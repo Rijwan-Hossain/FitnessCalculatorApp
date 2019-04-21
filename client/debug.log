@@ -20,3 +20,4 @@
 [0402/234856.471:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
 [0408/203204.959:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
 [0409/084347.568:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports
+[0420/201940.983:ERROR:prune_crash_reports.cc(34)] PruneCrashReportDatabase: Failed to get pending reports

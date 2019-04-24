@@ -6,8 +6,8 @@ const jwt = require('jsonwebtoken')
 
 // Create User 
 const adminRegister = (req, res) => { 
-    let name = 'Md. Rijyan Hossain';
-    let email = 'rijyan.cse.152@gmail.com';
+    let name = 'Md. Rijyan Hossain'; 
+    let email = 'rijyan.cse.152@gmail.com'; 
     let password = '152002007'; 
     
     bcrypt.hash(password, 10, (err, hash) => { 
@@ -55,7 +55,7 @@ let getAdmin = (req, res) => {
         .then(admin => { 
             res.json({ 
                 message: 'Admin Info', 
-                admin 
+                admin: admin[0] 
             }) 
         }) 
         .catch(err => { 
@@ -72,10 +72,7 @@ let getAdmin = (req, res) => {
 // Login 
 let adminLogin = (req, res) => { 
     let { email, password } = req.body 
-    console.log(email);
-    console.log(password);
     
-
     Admin.findOne({email}) 
         .then(admin => { 
             if(!admin) { 
@@ -127,38 +124,45 @@ let adminLogin = (req, res) => {
 
 // Update admin Profile
 let updateAdmin = (req, res) => { 
-    let { id } = req.params; 
+    console.log('Hello World');
     
-    Admin.findOneAndUpdate({_id: id}, {$set: req.body}) 
-        .then((updatedAdmin) => { 
-            if(Object.keys(updatedAdmin).length === 0) { 
-                res.json({ 
-                    message: 'No User Found' 
-                }) 
-            } 
-            else { 
+    let { id } = req.params; 
+    // let { password } = req.body 
+    
+    let password = req.body.password || '152002007'; 
+
+    bcrypt.hash(password, 10, (err, hash) => { 
+        let newAdmin = { 
+            name: req.body.name, 
+            password: hash, 
+            mobile: req.body.mobile || '', 
+            avatar: req.body.avatar || '', 
+            gender: req.body.gender || '', 
+            weight: req.body.weight || '', 
+            ft: req.body.ft || '', 
+            inch: req.body.inch || '', 
+            address: req.body.address || '' 
+        } 
+
+        console.log('hashed password');
+        console.log(hash);
+        
+
+        Admin.findOneAndUpdate({_id: id}, {$set: newAdmin}) 
+            .then((updatedAdmin) => { 
                 res.json({ 
                     message: 'Updated Successfully',
                     updatedAdmin 
                 }) 
-            } 
-        }) 
-        .catch(err => { 
-            if(Object.keys(err).length === 0) {
-                User.findById(id) 
-                    .then(updatedAdmin => { 
-                        res.json({ 
-                            message: 'Updated Successfully', 
-                            updatedAdmin 
-                        }) 
-                    }) 
-            } 
-            else { 
+                console.log('Updated Successfully');
+                
+            }) 
+            .catch(err => { 
                 res.json({ 
-                    message: 'error Occurred in updating in server' 
+                    message: 'error Occurred while updating in server' 
                 }) 
-            } 
-        }) 
+            }) 
+    })
 } 
 
 

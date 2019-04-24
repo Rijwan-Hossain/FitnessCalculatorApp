@@ -12,6 +12,7 @@ const authenticate = require('../Middlewares/authenticate')
 
 
 // routes
+// /api/admin/updateadmin
 router.get('/adminregister', adminRegister); 
 router.get('/getadmin', getAdmin); 
 router.delete('/adminregister/:id', deleteAdmin); 

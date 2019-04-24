@@ -73,8 +73,8 @@ class Form extends Component {
                     setTimeout(() => {
                         this.props.history.push('/profile');
                     }, 1500) 
-                }
-            })
+                } 
+            }) 
             .catch(err => {
                 this.setState({
                     serverError: true

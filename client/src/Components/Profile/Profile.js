@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import jwtDecode from 'jwt-decode' 
 import axios from 'axios' 
 import './profileStyle.css'
+import { ToastContainer, toast } from 'react-toastify'
 
 class Profile extends Component { 
     state = { 
@@ -10,6 +11,10 @@ class Profile extends Component {
     } 
 
     componentDidMount() { 
+        toast.success(`Welcome to your profile.`, { 
+            position: toast.POSITION.BOTTOM_RIGHT
+        }) 
+
         let token = localStorage.getItem('token').split(' ')[1] 
         let user = jwtDecode(token) 
         
@@ -60,6 +65,7 @@ class Profile extends Component {
 
         return ( 
             <div className="container"> 
+                <ToastContainer /> 
                 <div className="d-flex my-3"> 
                     <h2 className="align-items-start col-8 text-center"
                         style={{zIndex: '-1'}}
@@ -87,32 +93,30 @@ class Profile extends Component {
                     <div 
                         id="img" 
                         style={{borderRadius: '5px'}}
-                        className="align-items-start">
+                        className="align-items-start"> 
                         { 
                             avatar 
                             ? 
                             <img 
-                                style={{borderRadius: '5px'}}
-                                height='250px' 
-                                width='100%' 
+                                style={{borderRadius: '5px'}} 
                                 src={ avatar } 
-                                alt="myImage"/>
+                                alt="myImage"/> 
                             :
                             <h4 
                                 style={{ 
                                     marginTop: '80px', 
-                                    fontSize: '35px'
+                                    fontSize: '35px' 
                                 }} 
-                                className="text-center display-4">
-                                Image Not Available
-                            </h4>
+                                className="text-center display-4"> 
+                                Image Not Available 
+                            </h4> 
                         } 
                     </div> 
                     <div style={{zIndex: '-1', width: '76%'}}> 
                         <h3 
-                            style={{fontSize: '40px'}}
-                            className="display-4"
-                        >
+                            style={{fontSize: '40px'}} 
+                            className="display-4" 
+                        > 
                             { name } 
                         </h3> 
                         <p style={{color: 'rgb(99, 168, 248)'}}>

@@ -43,12 +43,12 @@ class OnePost extends Component {
             <li 
                 style={{ 
                     listStyle: 'none', 
-                    background: 'rgb(240, 240, 242)', 
+                    background: 'rgb(250, 220, 165)', 
                     marginBottom: '15px', 
                     padding: '15px', 
                     borderRadius: '6px' 
                 }}> 
-                <div className="media">
+                <div className="media"> 
                     {
                         authorAvatar 
                         ? 

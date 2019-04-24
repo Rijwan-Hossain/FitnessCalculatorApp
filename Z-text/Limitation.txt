@@ -1,0 +1,15 @@
+
+
+Limitation
+    1. Algorithm can be more better. 
+    2. No multiple level of admin. 
+    3. There are few bugs. 
+    
+
+
+
+
+
+
+
+

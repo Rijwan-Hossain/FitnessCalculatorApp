@@ -29,6 +29,8 @@ class CreatePost extends Component {
             body: this.state.body,
             authorAvatar: this.state.avatar,
         } 
+        console.log(post);
+        
         axios.post('http://localhost:5000/api/posts', post) 
             .then(result => { 
                 this.setState({ 
@@ -36,6 +38,12 @@ class CreatePost extends Component {
                     title: '', 
                     body: '' 
                 }) 
+
+                setTimeout(() => {
+                    this.setState({ 
+                        success: '', 
+                    }) 
+                },1500)
             }) 
             .catch(err => { 
                 this.setState({ 
@@ -47,7 +55,7 @@ class CreatePost extends Component {
 
 
     componentDidMount() { 
-        try {
+        try { 
             let token = localStorage.getItem('token').split(' ')[1] 
             let user = jwtDecode(token) 
 
@@ -100,7 +108,7 @@ class CreatePost extends Component {
                     <div
                         className="mt-3"
                         style={{ 
-                            background: 'rgb(240, 240, 242)', 
+                            background: 'rgb(200, 240, 242)', 
                             padding: '8px', 
                             borderRadius: '5px' 
                         }}> 
@@ -167,16 +175,12 @@ class CreatePost extends Component {
                                 </form> 
                                 { 
                                     this.state.success && 
-                                    <Modal show={true}> 
+                                    <Modal 
+                                        centered
+                                        show={true}> 
                                         <ModalBody> 
                                             { this.state.success } 
                                         </ModalBody> 
-
-                                        <ModalFooter>
-                                            <Button onClick={this.closeSuccessModal}>
-                                                close 
-                                            </Button> 
-                                        </ModalFooter> 
                                     </Modal> 
                                 } 
                             </div> 

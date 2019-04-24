@@ -10,10 +10,28 @@ class Blog extends Component {
     } 
 
     postRefresher = () => { 
-        this.setState({ 
-            reload: true 
-        }) 
+        let cnt = 0; 
+        let id = setInterval(() => { 
+            cnt++; 
+            if(cnt === 1) { 
+                this.setState({ 
+                    reload: true 
+                }, () => { 
+                    console.log('First time');
+                    console.log(this.state.reload);
+                }) 
+            } else { 
+                this.setState({  
+                    reload: false  
+                }, () => { 
+                    console.log('second time');
+                    console.log(this.state.reload);
+                })  
+            }  
+            if(cnt === 2) clearInterval(id) 
+        }, 50)  
     } 
+
     
     render() { 
         return ( 

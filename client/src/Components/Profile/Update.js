@@ -52,8 +52,6 @@ class Update extends Component {
             }) 
         }  
         else { 
-            console.warn('I am in file type successfully') 
-            
             let file = e.target.files[0] 
 
             let formData = new FormData() 

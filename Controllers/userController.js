@@ -17,12 +17,11 @@ const register = (req, res) => {
         }) 
     } 
     
-    
     // Check Duplicate User 
     User.findOne({email}) 
         .then(user => { 
-            if(Object.keys(user).length > 0) { 
-                res.json({ 
+            if(user) { 
+                return res.json({ 
                     message: 'You cannot signup by this email.' 
                 }) 
             } 
@@ -67,8 +66,7 @@ const register = (req, res) => {
         }) 
         .catch(err => { 
             res.json({ 
-                message: 'Server Error', 
-                error: err 
+                message: 'Server Error in catch'
             }) 
         }) 
 } 

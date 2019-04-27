@@ -100,8 +100,8 @@ class Users extends Component {
                                 <OneUser 
                                     user={user}  i={i} 
                                 /> 
-                            )
-                        }) 
+                            ) 
+                        })  
                         :
                         <h1 
                             style={{fontSize: '30px'}} 

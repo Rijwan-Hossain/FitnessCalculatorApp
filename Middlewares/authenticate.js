@@ -5,9 +5,17 @@ const jwt = require('jsonwebtoken')
 let authenticate = (req, res, next) => { 
     try { 
         let token = req.headers.authorization.split(' ')[1] 
-        var decoded = jwt.verify(token, 'SECRET') 
-        req.user = decoded 
-        next() 
+            jwt.verify(token, 'SECRET', (err, decode) => { 
+            if(err) {
+                console.log('err');
+                // console.log(err);
+                return res.json({
+                    message: 'Login Required' 
+                }) 
+            } 
+            // req.user = decoded 
+            next() 
+        }) 
     } 
     catch(err) { 
         res.json({ 

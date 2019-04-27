@@ -125,7 +125,6 @@ class Update extends Component {
                 <form onSubmit={this.submitHandler} style={{ width: '100%' }}>
                     <div style={{ float: 'left', marginRight: '40px' }}>
                         <div style={{
-                            height: '150px',
                             width: '150px',
                             background: 'rgb(200, 200, 200)', 
                             borderRadius: '5px'
@@ -134,7 +133,6 @@ class Update extends Component {
                                 avatar 
                                 ? 
                                 <img 
-                                    height='150px' 
                                     width='150px'
                                     src={avatar} 
                                     alt="myImage" 

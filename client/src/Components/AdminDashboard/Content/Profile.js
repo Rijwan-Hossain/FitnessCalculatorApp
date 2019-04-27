@@ -21,8 +21,6 @@ class Profile extends Component {
                 this.setState({ 
                     admin 
                 }) 
-                console.log(admin);
-                
             }) 
             .catch(err => { 
                 console.log('Server Error'); 

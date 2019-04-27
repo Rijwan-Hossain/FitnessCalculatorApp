@@ -3,7 +3,7 @@ import { NavLink, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import './Form.css'
 import jwtDecode from 'jwt-decode'
-import {Modal, ModalBody, Button, ModalFooter } from 'react-bootstrap'
+import { Modal, ModalBody, Button, ModalFooter } from 'react-bootstrap'
 
 
 const initState = {

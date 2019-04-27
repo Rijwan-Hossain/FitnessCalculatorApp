@@ -11,9 +11,8 @@ class ShowTutorials extends Component {
     componentDidMount() { 
         axios.get('http://localhost:5000/api/tutorials') 
             .then(result => { 
-                console.log(result.data.result) 
                 this.setState({ 
-                    articles: result.data.result 
+                    articles: result.data.result.reverse() 
                 }) 
             }) 
             .catch(err => { 
@@ -22,7 +21,7 @@ class ShowTutorials extends Component {
                 }) 
             }) 
     } 
-
+    
     render() { 
         return ( 
             <div 

@@ -6,7 +6,7 @@ const PostSchema = new Schema({
     title: String, 
     body: String, 
     author: String, 
-    authorAvatar: String,
+    avatar: String,
     like: { 
         type: Number, 
         default: 0

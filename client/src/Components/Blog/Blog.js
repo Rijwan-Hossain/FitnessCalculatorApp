@@ -16,16 +16,10 @@ class Blog extends Component {
             if(cnt === 1) { 
                 this.setState({ 
                     reload: true 
-                }, () => { 
-                    console.log('First time');
-                    console.log(this.state.reload);
                 }) 
             } else { 
                 this.setState({  
                     reload: false  
-                }, () => { 
-                    console.log('second time');
-                    console.log(this.state.reload);
                 })  
             }  
             if(cnt === 2) clearInterval(id) 

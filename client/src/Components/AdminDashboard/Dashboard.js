@@ -1,28 +1,26 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import Profile from './Content/Profile'
-import Users from './Content/Users'
-import Blog from './Content/Blog'
+import Users from './Content/Users/Users'
 import UpdateProfile from './Content/UpdateProfile'
 import Tutorials from './Content/Tutorials'
 
 
-
-class Dashboard extends Component {
-    state = {
+class Dashboard extends Component { 
+    state = { 
         page: '1'
-    }
+    } 
 
     toPage = (p) => {
         this.setState({
             page: p
         })
-    }
+    } 
 
     adminLogout = () => {
         localStorage.removeItem('token');
         this.props.history.push('/login');
-    }
+    } 
 
 
     render() {
@@ -72,18 +70,10 @@ class Dashboard extends Component {
                             Users
                         </p>
 
-                        <p
-                            onClick={() => this.toPage('3')}
-                            style={{
-                                // color: 'black', 
-                                fontSize: '22px',
-                                cursor: 'pointer'
-                            }}>
-                            Blog
-                        </p>
+                        
 
                         <p
-                            onClick={() => this.toPage('4')}
+                            onClick={() => this.toPage('3')}
                             style={{
                                 // color: 'black', 
                                 fontSize: '22px',
@@ -93,7 +83,7 @@ class Dashboard extends Component {
                         </p>
 
                         <p
-                            onClick={() => this.toPage('5')}
+                            onClick={() => this.toPage('4')}
                             style={{
                                 // color: 'black', 
                                 fontSize: '22px',
@@ -114,14 +104,10 @@ class Dashboard extends Component {
                         }
                         {
                             page === '3' &&
-                            <Blog /> 
-                        }
-                        {
-                            page === '4' &&
                             <Tutorials /> 
                         }
                         {
-                            page === '5' &&
+                            page === '4' &&
                             <UpdateProfile /> 
                         }
                     </div>
@@ -129,8 +115,8 @@ class Dashboard extends Component {
                 
             </div>
         )
-    }
-}
+    } 
+} 
 
 export default withRouter(Dashboard)
 

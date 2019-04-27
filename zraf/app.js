@@ -1,22 +1,28 @@
 
+// var WordPOS = require('wordpos'),
+//     wordpos = new WordPOS();
 
 
-// Object 
+//     wordpos.getPOS('I have the neck pain this is why I cant give push up', 
+//     (result) => { 
+//         console.log(result.verbs);
+//         console.log(result.nouns);
+//         console.log(result.adjectives);
+//         console.log(result.adverbs);
+//         console.log(result.rest); 
+//     }) 
 
-var user1 = {
-    name: 'Omar Faruk', 
-    isAuthenticated: false, 
-    age: 23, 
-    skills: {
-        php: '70%', 
-        js: '80%', 
-        html: '75%'
-    }, 
-    func: () => { 
-        for(let i in user1.skills) { 
-            console.log(`${user1.name}\'s skill on ${i.toUpperCase()} is ${user1.skills[i]}`); 
-        } 
-    } 
-} 
+//     wordpos.getAdjectives('I have the little neck pain this is why I cant give push up', (result) => {
+//         console.log(result);
+//     }) 
 
-user1.func();  
+//     wordpos.isAdjective('I', (result) => {
+//         console.log(result);
+//     }) 
+
+
+
+// let arr = ['a', 'b', 'c'] 
+// console.log(arr.reverse());
+
+

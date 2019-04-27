@@ -37,24 +37,24 @@ class OnePost extends Component {
 
 
     render() { 
-        let { author, authorAvatar, title, body, like, comments } = this.props.post
+        let { author, avatar, title, body, like, comments } = this.props.post
         
         return ( 
             <li 
                 style={{ 
                     listStyle: 'none', 
-                    background: 'rgb(250, 220, 165)', 
+                    background: 'rgb(199, 235, 240)', 
                     marginBottom: '15px', 
                     padding: '15px', 
                     borderRadius: '6px' 
                 }}> 
                 <div className="media"> 
                     {
-                        authorAvatar 
+                        avatar 
                         ? 
                         <img 
-                            src={authorAvatar} 
-                            height="68px" 
+                            src={avatar} 
+                            // height="68px" 
                             width="68px" 
                             className="mr-2 rounded-circle" 
                             alt="Avatar"/> 
@@ -62,7 +62,7 @@ class OnePost extends Component {
                         <div style={{height: '68px', width: '68px', background: 'grey'}}></div>
                     } 
                     
-                    <div className="media-body">
+                    <div className="media-body ml-2">
                         <p 
                             className="text-dark"
                             style={{fontSize: '22px', margin: '0px', padding: '0px'}}> 

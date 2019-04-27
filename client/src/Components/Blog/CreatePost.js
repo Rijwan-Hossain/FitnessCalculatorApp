@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 import axios from 'axios'
-import { Modal, ModalBody, Button, ModalFooter } from 'react-bootstrap' 
+import { Modal, ModalBody } from 'react-bootstrap' 
 
 
 class CreatePost extends Component { 
@@ -27,7 +27,7 @@ class CreatePost extends Component {
             author: this.state.author,
             title: this.state.title,
             body: this.state.body,
-            authorAvatar: this.state.avatar,
+            avatar: this.state.avatar,
         } 
         console.log(post);
         
@@ -59,11 +59,17 @@ class CreatePost extends Component {
             let token = localStorage.getItem('token').split(' ')[1] 
             let user = jwtDecode(token) 
 
-            if(user.email === 'rijyan.cse.152@gmail.com') 
-            { 
-                this.setState({ 
-                    author: user.name 
-                }) 
+            if(user.email === 'rijyan.cse.152@gmail.com') {
+                axios.get('http://localhost:5000/api/admin/getadmin') 
+                    .then(result => {
+                        this.setState({ 
+                            author: result.data.admin.name, 
+                            avatar: result.data.admin.avatar 
+                        })  
+                    }) 
+                    .catch(err => { 
+                        console.log('Error');
+                    }) 
             } 
             else { 
                 axios.get(`http://localhost:5000/api/users/register/${user.id}`)
@@ -120,7 +126,7 @@ class CreatePost extends Component {
                                 ? 
                                 <img 
                                     src={this.state.avatar} 
-                                    height="80px" 
+                                    // height="80px" 
                                     width="80px" 
                                     className="rounded-circle" 
                                     style={{ 

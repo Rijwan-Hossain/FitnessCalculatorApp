@@ -99,6 +99,7 @@ class Profile extends Component {
                             ? 
                             <img 
                                 style={{borderRadius: '5px'}} 
+                                width="100%"
                                 src={ avatar } 
                                 alt="myImage"/> 
                             :
@@ -126,7 +127,7 @@ class Profile extends Component {
 
                         <h6 className="mt-4 mb-3"
                             style={{
-                                color: 'rgb(156, 156, 156)'
+                                color: 'steelblue'
                             }}> 
                             BASIC INFORMATION 
                         </h6> 
@@ -186,7 +187,7 @@ class Profile extends Component {
 
                         <h6 className="mt-5 mb-3"
                             style={{
-                                color: 'rgb(156, 156, 156)'
+                                color: 'steelblue'
                             }}> 
                             QUICK CONTACT  
                         </h6> 

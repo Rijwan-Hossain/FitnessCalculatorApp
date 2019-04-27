@@ -90,7 +90,7 @@ content-type: application/json
 
 { 
     "question": "How to remove belly fat", 
-    "solution": "qrstuv wxyz ghijk abcdef lmnop."
+    "solution": " This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat."
 } 
 
 
@@ -106,12 +106,12 @@ GET http://localhost:5000/api/tutorials/5c9de113128e870604a41dcf HTTP/1.1
 
 ### 
 // Update Tutorial
-PATCH http://localhost:5000/api/tutorials/5c9e729a1a90972320276b8b HTTP/1.1
+PATCH http://localhost:5000/api/tutorials/5cc0bc3d7cfbf41438410f4d HTTP/1.1
 content-type: application/json
 
 { 
-    "question": "How fat stored in belly", 
-    "solution": "abcdef ghijk lmnop qrstu vwxyz."
+    "question": "How to remove belly fat", 
+    "solution": "This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. This is how you can remove betty fat. "
 } 
 
 
@@ -160,8 +160,8 @@ POST http://localhost:5000/api/users/login HTTP/1.1
 content-type: application/json
 
 { 
-    "email": "rijwan.152.cse@gmail.com", 
-    "password": "152002007" 
+    "email": "hossainrijwan@gmail.com", 
+    "password": "123456" 
 } 
 
 
@@ -175,22 +175,22 @@ GET http://localhost:5000/api/users/register/5c99ed6f7211e71758287865 HTTP/1.1
 // Update User
 ###
 
-PATCH http://localhost:5000/api/users/register/5c96eaf26a163421c4bf4b6a HTTP/1.1 
+PATCH http://localhost:5000/api/users/register/5cbd55b37116dd90c88ce0422 HTTP/1.1 
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjYmQ1NWIzNzE2ZGQ5MGM4OGNlMDQyMiIsIm5hbWUiOiJSaWp3YW4gSG9zc2FpbiIsImVtYWlsIjoiaG9zc2FpbnJpandhbkBnbWFpbC5jb20iLCJpYXQiOjE1NTYyNTgzOTQsImV4cCI6MTU1NjM0NDc5NH0.dRS1G82PxVusJtcywQdVfQJf5hU44LGy9dS-sOnNl0w
 
-{ 
-    "weight": "72 KG", 
-    "gender": "male",
-    "height": "5 ft 10 inch", 
-    "mobile": "01758712370",
-    "address": "Mirpur-Dhaka, Bangladesh in South-Asia"
-} 
+{  
+    "name": "Md. Rijyan Hossain" 
+}  
 
 
 // Delete User
 ###
 
 DELETE http://localhost:5000/api/users/register/5c9aaa64eb1be60d981db9e0 HTTP/1.1 
+
+
+
 
 
 

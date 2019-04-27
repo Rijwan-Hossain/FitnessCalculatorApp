@@ -31,28 +31,31 @@ class Blog extends Component {
         return ( 
             <div className="container"> 
                 <div className="d-flex"> 
+                    <div style={{width: '60%'}}>
+                        <div style={{margin: '0px',padding: '0px'}}>
+                            <CreatePost refreshFun={this.postRefresher} />  
+                        </div> 
+                        <div style={{ 
+                            margin: '0px', 
+                            padding: '0px', 
+                            overflow: 'hidden'
+                        }}>
+                            {
+                                this.state.reload 
+                                ? 
+                                <ShowPost reload={this.state.reload} /> 
+                                : 
+                                <ShowPost /> 
+                            }
+                        </div> 
+                    </div>
                     <div 
-                        style={{margin: '0px',padding: '0px'}} 
-                        className="col-7">
-                        <CreatePost refreshFun={this.postRefresher} />  
-                    </div> 
-                    <div 
-                        style={{margin: '0px',padding: '0px'}} 
+                        style={{margin: '0px',padding: '0px', width: '40%'}} 
                         className="col-5">
                         <Search /> 
-                    </div> 
+                    </div>  
                 </div> 
-                <div style={{margin: '0px',padding: '0px'}} className="col-7">
-                    {
-                        this.state.reload 
-                        ? 
-                        <ShowPost reload={this.state.reload} /> 
-                        : 
-                        <ShowPost /> 
-                    }
-                    
-                </div> 
-
+                
                 <div style={{height: '50px'}}></div>
             </div> 
         ) 
@@ -61,5 +64,5 @@ class Blog extends Component {
 
 export default Blog 
 
-
+                    
 

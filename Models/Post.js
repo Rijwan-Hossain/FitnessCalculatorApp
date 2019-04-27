@@ -22,7 +22,7 @@ const PostSchema = new Schema({
 PostSchema.index( 
     { 
         'title': 'text', 
-        'body': 'text', 
+        'body': 'text' 
     } 
 ) 
 

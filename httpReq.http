@@ -61,13 +61,26 @@ content-type: application/json
 
 // Delete Post
 ###
-DELETE http://localhost:5000/api/posts/5ca0ebb60f7f8e0c408c470f HTTP/1.1
+DELETE http://localhost:5000/api/posts/5cc3f0ff10e8691dfc85db55 HTTP/1.1
 
 
 
 // Like Post
 ###
 GET http://localhost:5000/api/posts/5ca086875e711d09a857e351/like HTTP/1.1
+
+
+// Search Post  
+### 
+POST http://localhost:5000/api/posts/search HTTP/1.1
+content-type: application/json
+
+{ 
+    "terms": "push up" 
+} 
+
+
+
 
 
 

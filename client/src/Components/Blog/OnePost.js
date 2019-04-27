@@ -6,7 +6,7 @@ class OnePost extends Component {
     state = { 
         showMsg: false 
     } 
-
+    
     
     likeHandler = () => { 
         try { 
@@ -43,7 +43,7 @@ class OnePost extends Component {
             <li 
                 style={{ 
                     listStyle: 'none', 
-                    background: 'rgb(199, 235, 240)', 
+                    background: 'rgb(240 240 240)', 
                     marginBottom: '15px', 
                     padding: '15px', 
                     borderRadius: '6px' 
@@ -64,7 +64,7 @@ class OnePost extends Component {
                     
                     <div className="media-body ml-2">
                         <p 
-                            className="text-dark"
+                            className="text-dark" 
                             style={{fontSize: '22px', margin: '0px', padding: '0px'}}> 
                             {author} 
                         </p> 

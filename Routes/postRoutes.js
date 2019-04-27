@@ -6,7 +6,8 @@ const {
     getSinglePost, 
     updatePost, 
     deletePost, 
-    likePost
+    likePost, 
+    searchPost
 } = require('../Controllers/postController')
 router.post('/', createPost) 
 router.get('/', getAllPost) 
@@ -15,6 +16,7 @@ router.patch('/:id', updatePost)
 router.delete('/:id', deletePost) 
 router.get('/:postId/like', likePost) 
 
+router.post('/search', searchPost) 
 
 
 module.exports = router

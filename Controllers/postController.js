@@ -1,5 +1,8 @@
 const Post = require('../Models/Post') 
 const mongoose = require('mongoose')
+const WordPOS = require('wordpos'),
+      wordpos = new WordPOS();
+
 
 const createPost = (req, res) => { 
     let { title, body, author, avatar } = req.body 
@@ -139,12 +142,115 @@ const likePost = (req, res) => {
         }) 
 } 
 
+
+// Search post 
+let searchPost = (req, res) => { 
+    console.log('body');
+    console.log(req.body);
+    
+    let { terms } = req.body; 
+
+    wordpos.getPOS(terms, (result) => { 
+        let { nouns, adjectives } = result 
+
+        let i, term = '' 
+
+        for(i = 0; i < nouns.length; i++) {
+            if(nouns[i] === 'I') {
+                nouns.splice(i, 1) 
+            } 
+            else if(nouns[i] === 'i') {
+                nouns.splice(i, 1) 
+            } 
+            else if(nouns[i] === 'we') {
+                nouns.splice(i, 1) 
+            } 
+            else if(nouns[i] === 'We') { 
+                nouns.splice(i, 1) 
+            } 
+            else if(nouns[i] === 'so') {
+                nouns.splice(i, 1) 
+            } 
+            else if(nouns[i] === 'So') {
+                nouns.splice(i, 1) 
+            } 
+            else if(nouns[i] === 'us') {
+                nouns.splice(i, 1) 
+            } 
+            else if(nouns[i] === 'Us') {
+                nouns.splice(i, 1) 
+            } 
+        }
+
+
+        for(i = 0; i < adjectives.length; i++) { 
+            if(adjectives[i] === 'I') { 
+                adjectives.splice(i, 1) 
+            } 
+            else if(adjectives[i] === 'i') { 
+                adjectives.splice(i, 1) 
+            } 
+            else if(adjectives[i] === 'we') { 
+                adjectives.splice(i, 1) 
+            } 
+            else if(adjectives[i] === 'We') { 
+                adjectives.splice(i, 1) 
+            } 
+            else if(adjectives[i] === 'so') { 
+                adjectives.splice(i, 1) 
+            } 
+            else if(adjectives[i] === 'So') { 
+                adjectives.splice(i, 1) 
+            } 
+            else if(adjectives[i] === 'us') { 
+                adjectives.splice(i, 1) 
+            } 
+            else if(adjectives[i] === 'Us') { 
+                adjectives.splice(i, 1) 
+            } 
+        } 
+        
+
+        for(i = 0; i < nouns.length; i++) { 
+            term = term + " " + nouns[i]  
+        }  
+
+        for(i = 0; i < adjectives.length; i++) { 
+            term = term + " " + adjectives[i] 
+        }  
+
+        Post.find({$text: {$search: term}}) 
+            .then(result => { 
+                    if(result.length) { 
+                        res.json({ 
+                            message: 'Search: Data found',
+                            result 
+                        })  
+                    }  
+                    else { 
+                        res.json({ 
+                            message: 'No Data found'
+                        }) 
+                    } 
+            }) 
+            .catch(() => { 
+                res.json({ 
+                    message: 'Error Occured'
+                }) 
+            }) 
+    }) 
+} 
+ 
+ 
+
+
 module.exports = { 
     createPost,  
     getAllPost, 
     getSinglePost, 
     updatePost, 
     deletePost, 
-    likePost
+    likePost, 
+    searchPost
 } 
 

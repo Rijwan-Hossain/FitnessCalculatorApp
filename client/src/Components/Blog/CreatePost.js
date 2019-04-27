@@ -130,7 +130,7 @@ class CreatePost extends Component {
                                     width="80px" 
                                     className="rounded-circle" 
                                     style={{ 
-                                        border: '3px solid rgb(218, 218, 218)'
+                                        border: '3px solid rgb(150, 150, 255)'
                                     }} 
                                     alt="avatar"/> 
                                 : 

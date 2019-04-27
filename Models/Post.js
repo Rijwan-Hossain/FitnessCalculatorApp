@@ -6,10 +6,10 @@ const PostSchema = new Schema({
     title: String, 
     body: String, 
     author: String, 
-    avatar: String,
+    avatar: String, 
     like: { 
         type: Number, 
-        default: 0
+        default: 0 
     }, 
     comments: [ 
         { 

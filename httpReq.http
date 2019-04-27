@@ -5,7 +5,16 @@
 #                         Comment                        #
 # ------------------------------------------------------ #
 
+# Create Comment 
+POST http://localhost:5000/api/posts/5cc4000dd372a919fccc0388/comments HTTP/1.1 
+content-type: application/json 
 
+{ 
+    "userId": "5cc3d19daf029a1fac6271ee", 
+    "userName": "Fahad Ahmed", 
+    "avatar": "https://res.cloudinary.com/rijwan/image/upload/v1556337231/mhkrx2aknuakz30ll2xf.jpg",
+    "body": "This is a 2nd sample comment." 
+} 
 
 
 
@@ -39,7 +48,7 @@ content-type: application/json
 
 // Get All Post
 ###
-GET http://localhost:5000/api/posts?per=3&page=1 HTTP/1.1
+GET http://localhost:5000/api/posts HTTP/1.1
 
 
 // Get Single Post
@@ -182,7 +191,7 @@ content-type: application/json
 // Get single user
 ###
 
-GET http://localhost:5000/api/users/register/5c99ed6f7211e71758287865 HTTP/1.1 
+GET http://localhost:5000/api/users/register/5cc3d19daf029a1fac6271ee HTTP/1.1 
 
 
 // Update User

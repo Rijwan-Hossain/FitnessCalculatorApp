@@ -1,14 +1,16 @@
 
 const router = require('express').Router() 
-const {
+const commentRoutes = require('./commentRoutes') 
+const { 
     createPost, 
     getAllPost, 
     getSinglePost, 
     updatePost, 
     deletePost, 
     likePost, 
-    searchPost
-} = require('../Controllers/postController')
+    searchPost 
+} = require('../Controllers/postController') 
+
 router.post('/', createPost) 
 router.get('/', getAllPost) 
 router.get('/:id', getSinglePost) 
@@ -18,6 +20,8 @@ router.get('/:postId/like', likePost)
 
 router.post('/search', searchPost) 
 
+// Comment Router
+router.use('/', commentRoutes) 
 
 module.exports = router
 

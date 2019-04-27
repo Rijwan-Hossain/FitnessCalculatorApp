@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import jwtDecode from 'jwt-decode'
 import axios from 'axios'
+import MakeComments from './MakeComments'
 
 class OnePost extends Component { 
     state = { 
-        showMsg: false 
+        showMsg: false,
+        showCmnt: false 
     } 
     
     
@@ -36,8 +38,12 @@ class OnePost extends Component {
     }
 
 
+    commentHandler = () => { 
+        this.setState({ showCmnt: !this.state.showCmnt }) 
+    } 
+
     render() { 
-        let { author, avatar, title, body, like, comments } = this.props.post
+        let { author, avatar, title, body, like, comments, _id } = this.props.post
         
         return ( 
             <li 
@@ -115,9 +121,8 @@ class OnePost extends Component {
                         Like 
                     </button> 
                     <button 
-                        style={{
-                            margin: '5px', padding: '5px'
-                        }}
+                        style={{margin: '5px', padding: '5px'}} 
+                        onClick={this.commentHandler}
                         className="ml-2 btn btn-block btn-info">
                         Comment
                     </button> 
@@ -132,6 +137,13 @@ class OnePost extends Component {
                         </p> 
                     } 
                 </div> 
+                <div>
+                    {
+                        this.state.showCmnt && 
+                        <MakeComments postId={_id} comments={comments} />  
+                    }
+                </div> 
+            
             </li> 
         ) 
     } 

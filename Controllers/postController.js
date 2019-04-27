@@ -33,6 +33,7 @@ const createPost = (req, res) => {
 // Get All
 const getAllPost = (req, res) => {
     Post.find() 
+        .populate('comments')
         .then(data => { 
             if(data.length) { 
                 res.json({ 
@@ -64,7 +65,7 @@ const getSinglePost = (req, res) => {
 
     if(mongoose.Types.ObjectId.isValid(id)) { 
         Post.findById(id) 
-            // .populate('comments') 
+            .populate('comments') 
             .then(post => { 
                 res.json({ 
                     message: 'Post Found', 
@@ -145,9 +146,6 @@ const likePost = (req, res) => {
 
 // Search post 
 let searchPost = (req, res) => { 
-    console.log('body');
-    console.log(req.body);
-    
     let { terms } = req.body; 
 
     wordpos.getPOS(terms, (result) => { 

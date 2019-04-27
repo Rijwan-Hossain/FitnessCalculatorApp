@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios' 
-import { Modal, ModalBody, Button, ModalFooter } from 'react-bootstrap'
-import Details from '../AdminDashboard/Content/Users/Details'
 
 const initState = { 
     terms: '', 
@@ -25,17 +23,13 @@ class Search extends Component {
         e.preventDefault() 
         axios.post('http://localhost:5000/api/posts/search', search) 
             .then((result) => { 
-                if(Object.keys(result.data).length == 1) { 
+                if(Object.keys(result.data).length === 1) { 
                     this.setState({ 
                         message: result.data.message, 
-                    }, () => { 
-                        console.log(this.state.message);
                     }) 
                 } else { 
                     this.setState({ 
                         data: result.data.result 
-                    }, () => { 
-                        console.log(this.state.data);
                     }) 
                 } 
             }) 

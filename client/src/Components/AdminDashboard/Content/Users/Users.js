@@ -5,24 +5,7 @@ import OneUser from './OneUser'
 class Users extends Component { 
     state = { 
         users: [], 
-        error: '', 
-        refresh: false 
-    } 
-
-    pageRefreser = () => { 
-        setTimeout( () => {
-            axios.get('http://localhost:5000/api/users/alluser') 
-            .then(result => { 
-                this.setState({ 
-                    users: result.data.users.reverse() 
-                }) 
-            }) 
-            .catch(err => { 
-                this.setState({ 
-                    error: 'Connection Lost' 
-                }) 
-            }) 
-        }, 100) 
+        error: ''
     } 
 
     componentDidMount() { 
@@ -62,11 +45,12 @@ class Users extends Component {
                     </p> 
                 </div> 
 
-                <div style={{
-                    background: '#E74C3F', 
-                    borderRadius: '5px', 
-                    marginBottom: '10px'
-                }} className="d-flex">
+                <div 
+                    style={{
+                        background: '#E74C3F', 
+                        borderRadius: '5px', 
+                        marginBottom: '10px'
+                    }} className="d-flex">
                     <p style={{
                         width: '20%',
                         lineHeight: '50px', 
@@ -108,16 +92,22 @@ class Users extends Component {
                 </div> 
 
                 <div>
-                    {
+                    { 
+                        users.length > 0 
+                        ?
                         users.map((user, i) => {
                             return (
                                 <OneUser 
-                                    user={user} 
-                                    i={i} 
-                                    refreshPage={this.pageRefreser}
+                                    user={user}  i={i} 
                                 /> 
                             )
                         }) 
+                        :
+                        <h1 
+                            style={{fontSize: '30px'}} 
+                            className="display-4 text-center text-dark">
+                            No User Available
+                        </h1>
                     }
                 </div>
             </div>  

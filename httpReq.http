@@ -175,9 +175,8 @@ GET http://localhost:5000/api/users/register/5c99ed6f7211e71758287865 HTTP/1.1
 // Update User
 ###
 
-PATCH http://localhost:5000/api/users/register/5cbd55b37116dd90c88ce0422 HTTP/1.1 
+PATCH http://localhost:5000/api/users/register/5cc3bbcadcb2810e28359a03 HTTP/1.1 
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjYmQ1NWIzNzE2ZGQ5MGM4OGNlMDQyMiIsIm5hbWUiOiJSaWp3YW4gSG9zc2FpbiIsImVtYWlsIjoiaG9zc2FpbnJpandhbkBnbWFpbC5jb20iLCJpYXQiOjE1NTYyNTgzOTQsImV4cCI6MTU1NjM0NDc5NH0.dRS1G82PxVusJtcywQdVfQJf5hU44LGy9dS-sOnNl0w
 
 {  
     "name": "Md. Rijyan Hossain" 

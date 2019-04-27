@@ -182,67 +182,64 @@ let login = (req, res) => {
 
 
 // Update User 
-// let updateUser = (req, res) => { 
-//     let { id } = req.params; 
-//     console.log('ID: ' + req.params.id);
-//     console.log(req.body);
+let updateUser = (req, res) => { 
+    let { id } = req.params; 
     
-//     let obj = {
-//         name: req.body.name
-//     }
-    
-//     User.findOneAndUpdate({_id: id}, req.body) 
-//         .then((updatedUser) => { 
-//             if(Object.keys(updatedUser).length === 0) { 
-//                 res.json({ 
-//                     message: 'No User Found' 
-//                 }) 
-//             } 
-//             else { 
-//                 res.json({ 
-//                     message: 'Updated Successfully',
-//                     updatedUser 
-//                 }) 
-//             } 
-//         }) 
-//         .catch(err => { 
-//             if(Object.keys(err).length === 0) { 
-//                 User.findById(id) 
-//                     .then(user => { 
-//                         res.json({ 
-//                             message: 'Updated Successfully', 
-//                             user 
-//                         }) 
-//                     }) 
-//             } 
-//             else { 
-//                 res.json({ 
-//                     message: 'error Occurred in updating in server', 
-//                     id 
-//                 }) 
-//             } 
-//         }) 
-// } 
+    User.findOneAndUpdate({_id: id}, {$set: req.body}) 
+        .then((updatedUser) => { 
+            if(Object.keys(updatedUser).length === 0) { 
+                res.json({ 
+                    message: 'No User Found' 
+                }) 
+            } 
+            else { 
+                res.json({ 
+                    message: 'Updated Successfully',
+                    updatedUser 
+                }) 
+            } 
+        }) 
+        .catch(err => { 
+            if(Object.keys(err).length === 0) { 
+                User.findById(id) 
+                    .then(user => { 
+                        res.json({ 
+                            message: 'Updated Successfully', 
+                            user 
+                        }) 
+                    }) 
+            } 
+            else { 
+                res.json({ 
+                    message: 'error Occurred in updating in server', 
+                    id 
+                }) 
+            } 
+        }) 
+} 
+
+
+
 
 
 // Updated User 
 
-let updateUser = (req, res) => {
-    let {id} = req.params; 
+// let updateUser = (req, res) => {
+//     let {id} = req.params; 
 
-    User.findByIdAndUpdate({_id: id}, {$set: req.body}) 
-        .then(() => { 
-            res.json({ 
-                message: 'Updated Successfully' 
-            }) 
-        }) 
-        .catch(err => { 
-            console.log('Error'); 
-            res.json({  
-                message: 'Error' 
-            })  
-        })  
-} 
+//     User.findByIdAndUpdate({_id: id}, {$set: req.body}) 
+//         .then(() => { 
+//             res.json({ 
+//                 message: 'Updated Successfully' 
+//             }) 
+//         }) 
+//         .catch(err => { 
+//             console.log('Error'); 
+//             res.json({  
+//                 message: 'Error' 
+//             })  
+//         })  
+// } 
 
 
 

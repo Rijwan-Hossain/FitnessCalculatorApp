@@ -14,28 +14,33 @@ class OneUser extends Component {
             extend: !this.state.extend 
         }) 
     } 
+    
 
-    removeHandler = () => { 
-        let id = this.props.user._id; 
-        axios.delete(`http://localhost:5000/api/users/register/${id}`)
+    deleteHandler = () => { 
+        let id = this.props.user._id 
+
+        axios.delete(`http://localhost:5000/api/users/register/${id}`) 
             .then(() => { 
                 this.setState({ 
-                    delete: true 
-                })  
+                    delete: true
+                }) 
 
                 setTimeout(() => { 
                     this.setState({ 
-                        delete: false 
+                        delete: false
                     }) 
-                }, 1500) 
+                }, 1500)
             }) 
-            .catch() 
+            .catch(() => {})
     } 
 
     render() { 
         let { 
             name, email, 
         } = this.props.user 
+        console.log('this.props');
+        console.log(this.props);
+        
         
         return ( 
             <li 
@@ -66,10 +71,7 @@ class OneUser extends Component {
                 /> 
                 <i 
                     class="fa fa-close fa-2x text-danger" 
-                    onClick={() => { 
-                        this.removeHandler(); 
-                        this.props.pageRefreser() 
-                    }} 
+                    onClick={this.deleteHandler} 
                     style={{ 
                         width: '15%', 
                         paddingTop: '-8px', 
@@ -100,7 +102,7 @@ class OneUser extends Component {
                         </ModalBody> 
                     </Modal> 
                 } 
-            </li>  
+            </li> 
         ) 
     } 
 } 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react' 
 import jwtDecode from 'jwt-decode'
 import A from '../../Assets/Images/A.png'
-import { Modal, ModalBody, Button, ModalFooter } from 'react-bootstrap'
+import { Modal, ModalBody } from 'react-bootstrap'
 import axios from 'axios'
 
 class OneList extends Component { 

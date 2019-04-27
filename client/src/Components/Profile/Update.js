@@ -96,14 +96,14 @@ class Update extends Component {
         let user = jwtDecode(token)
 
         axios.patch(`http://localhost:5000/api/users/register/${user.id}`, updatedValue)
-            .then(result => {
+            .then(result => { 
                 let { token } = result.data
-                if (token) {
+                if (token) { 
                     axios.defaults.headers.common['Authorization'] = token
-                }
-                else {
+                } 
+                else { 
                     axios.defaults.headers.common['Authorization'] = ''
-                }
+                } 
 
                 setTimeout(() => { 
                     this.props.history.push('/profile'); 
@@ -143,6 +143,7 @@ class Update extends Component {
                                     <p  
                                         style={{  
                                             paddingTop: '35px',  
+                                            paddingBottom: '35px',  
                                             textAlign: 'center',  
                                             fontSize: '30px'
                                         }} 

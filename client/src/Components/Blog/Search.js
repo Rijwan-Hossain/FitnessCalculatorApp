@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios' 
-
-const initState = { 
-    terms: '', 
-    noFoundMsg: '', 
-    data: []
-} 
+import MakeComments from './MakeComments';
 
 class Search extends Component { 
-    state = initState 
+    state = { 
+        terms: '', 
+        noFoundMsg: '', 
+        data: [], 
+        showCmnt: false 
+    }  
     
     changeHandler = (e) => { 
         this.setState({ 
@@ -35,10 +35,16 @@ class Search extends Component {
             }) 
     } 
 
+    commentHandler = () => {
+        this.setState({
+            showCmnt: !this.state.showCmnt 
+        }) 
+    } 
     
 
     render() { 
         let { data, message } = this.state 
+        
         return ( 
             <div style={{marginLeft: '10px'}}> 
                 <form 
@@ -61,15 +67,17 @@ class Search extends Component {
                 <div style={{marginTop: '20px'}}>
                     {
                         data.length ?
-                        data.map(d => {
+                        data.map((d, i) => {
                             return (
-                                <li style={{
-                                    listStyle: 'none', 
-                                    background: 'rgb(240 240 240)', 
-                                    borderRadius: '5px', 
-                                    padding: '10px', 
-                                    marginTop: '20px'
-                                }}>
+                                <li 
+                                    key={i}
+                                    style={{
+                                        listStyle: 'none', 
+                                        background: 'rgb(240 240 240)', 
+                                        borderRadius: '5px', 
+                                        padding: '10px', 
+                                        marginTop: '20px'
+                                    }}> 
                                     <div className="media-body ml-2">
                                         <p 
                                             className="text-dark" 
@@ -89,19 +97,28 @@ class Search extends Component {
                                         </p>  
                                     </div> 
                                     <hr/> 
-                                    <button className="btn btn-info mt-1"> 
+                                    <button 
+                                        onClick={this.commentHandler}
+                                        className="btn btn-info mt-1"> 
                                         Show Comments 
                                     </button> 
-                                </li>
-                            )
-                        })
+                                    { 
+                                        this.state.showCmnt && 
+                                        <MakeComments  
+                                            postId={d._id} 
+                                            comments={d.comments} 
+                                        /> 
+                                    } 
+                                </li> 
+                            ) 
+                        }) 
                         :
                         <h3>
                             { message }
                         </h3>
-                    }
-                </div>
-            </div> 
+                    } 
+                </div> 
+            </div>  
         ) 
     } 
 } 

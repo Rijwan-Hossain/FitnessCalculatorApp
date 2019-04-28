@@ -215,9 +215,10 @@ let searchPost = (req, res) => {
 
         for(i = 0; i < adjectives.length; i++) { 
             term = term + " " + adjectives[i] 
-        }  
+        } 
 
         Post.find({$text: {$search: term}}) 
+            .populate('comments') 
             .then(result => { 
                     if(result.length) { 
                         res.json({ 

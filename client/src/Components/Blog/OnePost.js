@@ -6,7 +6,8 @@ import MakeComments from './MakeComments'
 class OnePost extends Component { 
     state = { 
         showMsg: false,
-        showCmnt: false 
+        showCmnt: false, 
+        buttonValue: 'Comments' 
     } 
     
     
@@ -39,7 +40,10 @@ class OnePost extends Component {
 
 
     commentHandler = () => { 
-        this.setState({ showCmnt: !this.state.showCmnt }) 
+        this.setState({ 
+            showCmnt: !this.state.showCmnt, 
+            buttonValue: this.state.showCmnt ?  'Comments' : 'Hide Comments'  
+        }) 
     } 
 
     render() { 
@@ -60,8 +64,8 @@ class OnePost extends Component {
                         ? 
                         <img 
                             src={avatar} 
-                            // height="68px" 
                             width="68px" 
+                            style={{maxHeight: '80px'}}
                             className="mr-2 rounded-circle" 
                             alt="Avatar"/> 
                         : 
@@ -124,7 +128,7 @@ class OnePost extends Component {
                         style={{margin: '5px', padding: '5px'}} 
                         onClick={this.commentHandler}
                         className="ml-2 btn btn-block btn-info">
-                        Comment
+                        { this.state.buttonValue }
                     </button> 
                 </div> 
                 <div> 

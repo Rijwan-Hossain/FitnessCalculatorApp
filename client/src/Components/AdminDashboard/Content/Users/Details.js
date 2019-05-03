@@ -3,23 +3,16 @@ import React, { Component } from 'react'
 class Details extends Component {
     render() {
         let { 
-            name, 
-            email, 
-            gender, 
-            weight, 
-            mobile, 
-            address, 
-            ft, 
-            inch,  
-            avatar
+            name, email, gender, 
+            weight, mobile, address, 
+            ft, inch, avatar
         } = this.props.user 
         return ( 
             <div className="d-flex" 
-                style={{
+                style={{ 
                     width: '100%', 
-                    height: '40vh', 
-                    overflowY: 'scroll'
-                }}>
+                    height: '42vh'
+                }}> 
                 <div>
                     <div 
                         style={{ 
@@ -35,6 +28,10 @@ class Details extends Component {
                             <img 
                                 style={{borderRadius: '5px'}} 
                                 width="150px"
+                                style={{ 
+                                    maxHeight: '350px', 
+                                    borderRadius: '5px'
+                                }}
                                 src={ avatar } 
                                 alt="myImage"/> 
                             :

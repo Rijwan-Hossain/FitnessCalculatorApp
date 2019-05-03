@@ -38,9 +38,6 @@ class OneUser extends Component {
         let { 
             name, email, 
         } = this.props.user 
-        console.log('this.props');
-        console.log(this.props);
-        
         
         return ( 
             <li 

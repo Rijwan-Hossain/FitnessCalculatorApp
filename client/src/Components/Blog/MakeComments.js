@@ -15,7 +15,7 @@ class MakeComments extends Component {
     componentDidMount() { 
         if(this.props.comments) { 
             this.setState({ 
-                comments: this.props.comments 
+                comments: this.props.comments.reverse() 
             }) 
         } 
 

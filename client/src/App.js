@@ -4,9 +4,16 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Navigation from './Components/Navigation/Navigation' 
 import jwtDecode from 'jwt-decode' 
 
-import Home from './Components/Home/Home' 
+import Home from './Components/HomeComponent/Home' 
 
 import Dietplan from './Components/DietPlan/Dietplan'
+import Age from './Components/DietPlan/Age'
+import HeightWeight from './Components/DietPlan/HeightWeight'
+import BMI from './Components/DietPlan/BMI'
+import NoSolution from './Components/DietPlan/NoSolution'
+import Solution from './Components/DietPlan/solution'
+
+
 import Blog from './Components/Blog/Blog' 
 import Tutorials from './Components/Tutorials/Tutorial' 
 
@@ -31,6 +38,13 @@ class App extends Component {
               <Route path="/" component={Home} exact /> 
               
               <Route path="/diet" component={Dietplan} /> 
+              <Route path="/age" component={Age} /> 
+              <Route path="/height-weight" component={HeightWeight} /> 
+              <Route path="/bmi" component={BMI} /> 
+              <Route path="/nosolution" component={NoSolution} /> 
+              <Route path="/solution" component={Solution} /> 
+              
+
               <Route path="/blog" component={Blog} /> 
               <Route path="/tutorials" component={Tutorials} /> 
               

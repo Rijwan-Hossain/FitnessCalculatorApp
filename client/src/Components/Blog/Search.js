@@ -7,8 +7,9 @@ class Search extends Component {
         terms: '', 
         noFoundMsg: '', 
         data: [], 
-        showCmnt: false 
-    }  
+        showCmnt: false, 
+        buttonValue: 'Show Comments'
+    } 
     
     changeHandler = (e) => { 
         this.setState({ 
@@ -25,25 +26,27 @@ class Search extends Component {
             .then((result) => { 
                 if(Object.keys(result.data).length === 1) { 
                     this.setState({ 
-                        message: result.data.message, 
+                        message: result.data.message 
                     }) 
                 } else { 
                     this.setState({ 
-                        data: result.data.result 
+                        data: result.data.result, 
+                        terms: '' 
                     }) 
                 } 
             }) 
     } 
 
-    commentHandler = () => {
-        this.setState({
-            showCmnt: !this.state.showCmnt 
+    commentHandler = () => { 
+        this.setState({ 
+            showCmnt: !this.state.showCmnt, 
+            buttonValue: this.state.showCmnt ?  'Show Comments' : 'Hide Comments'  
         }) 
     } 
     
 
     render() { 
-        let { data, message } = this.state 
+        let { data, message, buttonValue } = this.state 
         
         return ( 
             <div style={{marginLeft: '10px'}}> 
@@ -100,7 +103,7 @@ class Search extends Component {
                                     <button 
                                         onClick={this.commentHandler}
                                         className="btn btn-info mt-1"> 
-                                        Show Comments 
+                                        { buttonValue } 
                                     </button> 
                                     { 
                                         this.state.showCmnt && 
@@ -123,11 +126,6 @@ class Search extends Component {
     } 
 } 
 
-export default Search
-
-
-
-
-
+export default Search 
 
 
